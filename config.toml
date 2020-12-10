@@ -1,0 +1,153 @@
+baseURL = "https://artemiscloud.github.io/website/"
+title = "Artemis Cloud"
+theme = "artemiscloudtheme"
+languageName = "En"
+languageCode = "en-us"
+
+# post pagination
+paginate = "3"
+
+# post excerpt
+summaryLength = "15"
+
+# disqus short name
+disqusShortname = "" # get your shortname form here : https://disqus.com
+
+# google analytics
+googleAnalytics = "" # example : UA-123-45
+
+# unsafe html
+[markup.goldmark.renderer]
+unsafe = true
+
+############################# Plugins ##############################
+
+# CSS Plugins
+[[params.plugins.css]]
+link = "plugins/bootstrap/bootstrap.min.css"
+[[params.plugins.css]]
+link = "plugins/themify-icons/themify-icons.css"
+[[params.plugins.css]]
+link = "plugins/slick/slick.css"
+
+# JS Plugins
+[[params.plugins.js]]
+link = "plugins/jQuery/jquery.min.js"
+[[params.plugins.js]]
+link = "plugins/bootstrap/bootstrap.min.js"
+[[params.plugins.js]]
+link = "plugins/slick/slick.min.js"
+
+
+############################## navigation ###############################
+
+# main menu
+[[menu.main]]
+name = "Blog"
+URL = "blog"
+weight = 1
+
+[[menu.main]]
+name = "Documentation"
+URL = "pages/documentation"
+weight = 3
+
+[[menu.main]]
+name = "Releases"
+URL = "documentation"
+weight = 4
+
+[[menu.main]]
+name = "Community"
+URL = "community"
+weight = 5
+
+[[menu.main]]
+name = "FAQ"
+URL = "faq"
+weight = 7
+
+# footer menu left
+#[[menu.footer_left]]
+#name = "About Us"
+#URL = "#"
+
+#[[menu.footer_left]]
+#name = "Quick Start"
+#URL = "#"
+
+#[[menu.footer_left]]
+#name = "Pricing"
+#URL = "pricing"
+
+
+# footer menu middle
+#[[menu.footer_middle]]
+#name = "Pricing"
+#URL = "pricing"
+
+#[[menu.footer_middle]]
+#name = "Platform"
+#URL = "#"
+
+#[[menu.footer_middle]]
+#name = "Features"
+#URL = "#"
+
+# footer menu right
+#[[menu.footer_right]]
+#name = "Privacy Policy"
+#URL = "privacy-policy"
+
+#[[menu.footer_right]]
+#name = "Terms & Conditions"
+#URL = "terms-conditions"
+
+#[[menu.footer_right]]
+#name = "FAQ"
+#URL = "faq"
+
+#################### default parameters ################################
+[params]
+logo = "images/logo.png"
+logo_width = "200px"
+# Meta data
+description = "This is meta description"
+author = "Themefisher"
+# contact form action
+contact_form_action = "#" # contact form works with https://formspree.io
+
+########### footer content ##########
+#footer_menu_left = "Company"
+#footer_menu_middle = "Product"
+#footer_menu_right = "Support"
+footer_title = "ArtemisCloud"
+footer_content = "Follow us on social ....."
+# copyright
+copyright = "All code and documentation is licensed under the Apache License version 2.0. Marks may be trademarks or registered trademarks of their respective owners."
+
+# Preloader
+[params.preloader]
+enable = false
+preloader = "" # use jpg, png, svg or gif format.
+
+############################# social site ########################
+#[[params.social]]
+#title = "facebook"
+#icon = "ti-facebook" # themify icon : https://themify.me/themify-icons
+#link = "#"
+
+#[[params.social]]
+#title = "twitter"
+#icon = "ti-twitter-alt" # themify icon : https://themify.me/themify-icons
+#link = "#"
+
+[[params.social]]
+title = "github"
+icon = "ti-github" # themify icon : https://themify.me/themify-icons
+link = "https://github.com/ArtemisCloud"
+
+#[[params.social]]
+#title = "linkedin"
+#icon = "ti-linkedin" # themify icon : https://themify.me/themify-icons
+#link = "#"

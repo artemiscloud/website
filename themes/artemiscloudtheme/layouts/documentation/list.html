@@ -1,0 +1,19 @@
+{{ define "main" }}
+{{ partial "page-header.html" . }}
+
+<section class="section">
+    <div class="container">
+        <div id="toc" class="well col-md-4 col-sm-6">
+            {{ .TableOfContents }}
+        </div>
+        <h1>{{ .Title }}</h1>
+        {{ .Content }}
+    </div>
+</section>
+
+
+<!-- call to action -->
+
+<!-- /call to action -->
+
+{{ end }}

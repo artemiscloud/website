@@ -1,0 +1,61 @@
+####################### Banner #########################
+banner:
+  title: "ArtemisCloud allows you to expose the power of ActiveMQ Artemis with kubernetes"
+  content: "ArtemisCloud is a collection of container images that allows the quick and easy deployment of Artemis with an Operator based solution"
+
+##################### Feature ##########################
+feature:
+  enable: true
+  title: "Feature Set"
+  feature_item:
+    # feature item loop
+    - name: "Cloud Oriented"
+      icon: "ti-cloud-up"
+      content: "The Artemis Container images are...."
+
+    # feature item loop
+    - name: "Kubernetes"
+      icon: "ti-package"
+      content: "The operator Container Image...."
+
+    # feature item loop
+    - name: "Openshift"
+      icon: "ti-package"
+      content: "works with OPS..."
+
+    # feature item loop
+    - name: "Protocol based"
+      icon: "ti-alarm-clock"
+      content: "AMQP, MQTT, STOMP, JMS, CORE"
+
+    # feature item loop
+    - name: "High Availability"
+      icon: "ti-pulse"
+      content: "HA provided by journal scaledown with the operator"
+
+######################### Service #####################
+service:
+  enable: true
+  service_item:
+    # service item loop
+    - title: "It is the most advanced digital marketing and it company."
+      images:
+        - "images/service-1.png"
+        - "images/service-2.png"
+        - "images/service-3.png"
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat. consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat."
+      button:
+        enable: true
+        label: "Check it out"
+        link: "#"
+
+    # service item loop
+    - title: "It is a privately owned Information and cyber security company"
+      images:
+        - "images/service-1.png"
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat. consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat."
+      button:
+        enable: true
+        label: "Check it out"
+        link: "#"
+
