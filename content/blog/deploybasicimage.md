@@ -82,4 +82,5 @@ easily send some messages using..
 artemis producer
 ```
 
-For more information on ActiveMQ Artemis pleasee read the [Artemis Documentation](https://activemq.apache.org/components/artemis/documentation/){:target="_blank"}
+For more information on ActiveMQ Artemis pleasee read the [Artemis Documentation](https://activemq.apache.org/components/artemis/documentation/)
+and for available environment properties to set you can check the [image.yaml](https://github.com/artemiscloud/activemq-artemis-broker-image/blob/master/image.yaml)
