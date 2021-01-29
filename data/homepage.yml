@@ -1,61 +1,61 @@
 ####################### Banner #########################
 banner:
-  title: "ArtemisCloud allows you to expose the power of ActiveMQ Artemis with kubernetes"
-  content: "ArtemisCloud is a collection of container images that allows the quick and easy deployment of Artemis with an Operator based solution"
+  title: "ArtemisCloud - Artemis on Kubernetes"
+  content: "ArtemisCloud allows you to expose the power of ActiveMQ Artemis with kubernetes. ArtemisCloud is a collection of tools, container images and content that allows the quick and easy deployment of the Artemis Broker on Kubernetes"
 
 ##################### Feature ##########################
 feature:
   enable: true
-  title: "Feature Set"
+  #title: "Feature Set"
   feature_item:
     # feature item loop
     - name: "Cloud Oriented"
-      icon: "ti-cloud-up"
-      content: "The Artemis Container images are...."
+      icon: "ti-cloud"
+      content: "The ability to quickly deploy and run the broker as a container image"
 
     # feature item loop
     - name: "Kubernetes"
       icon: "ti-package"
-      content: "The operator Container Image...."
+      content: "The ability to run a kubernetes native container on kubernetes"
 
     # feature item loop
-    - name: "Openshift"
-      icon: "ti-package"
-      content: "works with OPS..."
+    - name: "Operator"
+      icon: "ti-user"
+      content: "An Operator based solution to enable day to day management of the kubernetes deployment"
 
     # feature item loop
-    - name: "Protocol based"
-      icon: "ti-alarm-clock"
-      content: "AMQP, MQTT, STOMP, JMS, CORE"
+    - name: "Examples"
+      icon: "ti-files"
+      content: "A suite of examples to demonstrate each feature"
 
     # feature item loop
-    - name: "High Availability"
-      icon: "ti-pulse"
-      content: "HA provided by journal scaledown with the operator"
+    - name: "CI/CD"
+      icon: "ti-arrow-right"
+      content: "Continuous integration and deployment to quickly develop and test new features"
 
 ######################### Service #####################
-service:
-  enable: true
-  service_item:
-    # service item loop
-    - title: "It is the most advanced digital marketing and it company."
-      images:
-        - "images/service-1.png"
-        - "images/service-2.png"
-        - "images/service-3.png"
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat. consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat."
-      button:
-        enable: true
-        label: "Check it out"
-        link: "#"
+#service:
+  #  enable: true
+    #service_item:
+    ## service item loop
+      #- title: "It is the most advanced digital marketing and it company."
+        #images:
+        #- "images/service-1.png"
+        #- "images/service-2.png"
+      #- "images/service-3.png"
+      vcontent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat. consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat."
+        #button:
+        #enable: true
+        #label: "Check it out"
+      #link: "#"
 
     # service item loop
-    - title: "It is a privately owned Information and cyber security company"
-      images:
-        - "images/service-1.png"
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat. consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat."
-      button:
-        enable: true
-        label: "Check it out"
-        link: "#"
+      #    - title: "It is a privately owned Information and cyber security company"
+        #images:
+      #- "images/service-1.png"
+      #content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat. consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat."
+        #button:
+        #enable: true
+        #label: "Check it out"
+      #link: "#"
 
