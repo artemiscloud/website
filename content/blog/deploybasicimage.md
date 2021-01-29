@@ -82,4 +82,4 @@ easily send some messages using..
 artemis producer
 ```
 
-For more information on ActiveMQ Artemis pleasee read the [Artemis Documentation](https://activemq.apache.org/components/artemis/documentation/)
+For more information on ActiveMQ Artemis pleasee read the [Artemis Documentation](https://activemq.apache.org/components/artemis/documentation/){:target="_blank"}

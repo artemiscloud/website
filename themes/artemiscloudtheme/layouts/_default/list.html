@@ -10,7 +10,7 @@
     <div class="row">
       {{ $paginator := .Paginate .Data.Pages }}
       {{ range $paginator.Pages.ByDate }}
-      {{ if (isset .Params "sticky") }}
+      {{ if (eq .Type "featured") }}
         <div class="col-12 mb-5 pb-5">
           <div class="row align-items-center">
             <div class="col-md-6">

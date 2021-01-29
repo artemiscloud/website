@@ -13,8 +13,12 @@ Add the following as a starting point
     ---
 ```
 ---
+
+The type should be featured or regular, featured posts will always appear on the blog landing page.
+
 **NOTE** 
 Setting draft to false means you can push it to the website view it but it won't appear on the blog landing page, you could access this via //blog/myBlog
+
 ---
    
 You can also add an image by adding the image under static/images and adding.

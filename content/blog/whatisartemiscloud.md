@@ -7,7 +7,6 @@ image: "images/logo.png"
 type: "regular"
 # meta description
 description: "What is ArtemisCloud"
-sticky: true
 # post draft
 draft: false
 ---
