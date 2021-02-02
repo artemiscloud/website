@@ -6,7 +6,7 @@ Add the following as a starting point
 
 ```
     ---  
-    title: "My Blog Title  
+    title: "My Blog Title"  
     type: "featured"
     description: "My Blog Description"
     draft: false
@@ -34,7 +34,7 @@ You can then write your blog using markdown, this will be converted at compile t
 The first paragraph is what is shown on the Blog landing page so make it short and succinct
 ---
 
-You can add a you tube video by adding the follwoing
+You can add a youtube video by adding the following
 ```
     {{< youtube C0DPdy98e4c >}}
 ```
