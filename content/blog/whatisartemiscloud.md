@@ -10,6 +10,6 @@ description: "What is ArtemisCloud"
 # post draft
 draft: false
 ---
-ArtemisCloud is a collection of container images to allow users to deploy the ActiveMQ Artemis Broker from a simpl standalone docker image to a fully blown Operator controlled deployment. 
+ArtemisCloud is a collection of container images to allow users to deploy the ActiveMQ Artemis Broker from a simple standalone docker image to a fully blown Operator controlled deployment. 
 
 All the Container Images can be found at [quay.io](https://quay.io/organization/artemiscloud)
