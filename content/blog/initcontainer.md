@@ -2,17 +2,17 @@
 title: "Using the custom init image"  
 type: "featured"
 description: "Introduction to the opterator custom init image"
-draft: false
+draft: true
 ---
 
 Starting from [v0.18.1](https://github.com/artemiscloud/activemq-artemis-operator/tree/v0.18.1) the ActiveMQ Artemis Operator introduces a new feature called **custom init image** that allows users to do their own configuration of brokers within the operator framework.
 
-## What is Custom Init Image
-The custom init image is a user provided docker image that can be configured in the ActiveMQ Artemis broker custom resource file (CR). When the CR is deployed the ActiveMQ Artemis operator will search and run the post-configure script (if that exists in the custom init image) so that it can modify the broker instance pre-configured by the operator before the pod is started.
-
-## How it works
+### What is Custom Init Image
 The ActiveMQ Artemis operator works with the broker's [CustomResourceDefinition(CRD)](https://github.com/artemiscloud/activemq-artemis-operator/blob/v0.18.1/deploy/crds/broker_activemqartemis_crd.yaml) that defines a set of parameters to configure brokers through the operator. For example user can define address settings in the [CR file](https://github.com/artemiscloud/activemq-artemis-operator/blob/v0.18.1/deploy/examples/artemis-basic-address-settings-deployment.yaml) and deploy it into the cluster. However the broker CRD doesn't cover every respects of a broker configuration. When a user needs to configure the broker that not available in the CRD, they have to find some homemade ways to so it. For example using S2I directly with the broker container image.
 
+The custom init image is a user provided docker image that can be configured in the ActiveMQ Artemis broker custom resource file (CR). When the CR is deployed the ActiveMQ Artemis operator will search and run the post-configure script (if that exists in the custom init image) so that it can modify the broker instance pre-configured by the operator before the pod is started.
+
+### How it works
 Internally the ActiveMQ Artemis operator uses an init container to configure each broker instance. If no custom init image is specified it uses the [built-in init image](https://quay.io/repository/artemiscloud/activemq-artemis-broker-init) which is responsible for the actual configuration. Once done the broker configuration is passed to the [broker container image](https://quay.io/repository/artemiscloud/activemq-artemis-broker-kubernetes) to launch the broker with it.
 
 If a custom init image is specified in the CR, the operator installs it in place of the built-in init image. First the operator use this custom image as a built-in image to perform the configuration mentioned above, then it calls the post-config.sh script in the custom init image to start user provided custom configuration on top of the one produced by the built-in init image. The operator exposes the broker configuration instance location to the custom init image via a environment variable **CONFIG_INSTANCE_DIR**. In this location is a typical broker instance dir, whose structure is like
@@ -34,7 +34,7 @@ It can for example modify the logging settings and add/override some specific co
 
 After the post-config.sh is returned, the broker instance will be launched with the updated configuration.
 
-## Adding a custom init image
+### Adding a custom init image
 First you need to implement your custom init image.
 
 The custom init image shall follow the predefined rules:
@@ -70,7 +70,7 @@ spec:
 ```
 Finally deply the CR file.
 
-## Further information
+### Further information
 * A fully working example is available [here](https://github.com/artemiscloud/artemiscloud-examples/tree/main/operator/init/jdbc)
 
 * For issues/suggestions please raise it on [artemiscloud](https://github.com/artemiscloud/activemq-artemis-operator/issues)
