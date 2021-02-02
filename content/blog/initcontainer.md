@@ -2,7 +2,7 @@
 title: "Using the custom init image"  
 type: "featured"
 description: "Introduction to the opterator custom init image"
-draft: true
+draft: false
 ---
 
 Starting from [v0.18.1](https://github.com/artemiscloud/activemq-artemis-operator/tree/v0.18.1) the ActiveMQ Artemis Operator introduces a new feature called **custom init image** that allows users to do their own configuration of brokers within the operator framework.
