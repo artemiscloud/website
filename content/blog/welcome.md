@@ -6,7 +6,7 @@ type: "featured"
 description: "this is just our first hello to our ArtemisCloud blog"
 # post draft
 draft: false
+weight: 1
 ---
 
 Welcome to the ArtemisCloud project, A community and set of images and tools to help deploy the ActiveMQ Artemis Broker.
-
