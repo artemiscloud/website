@@ -11,11 +11,20 @@
   }
 }
 
+th {
+  border: 1px solid #00022b;
+  background-color: #00f7f7;
+}
+
+tr {
+  border: 1px solid #00022b;
+}
+
 .feature-card {
   border-radius: 10px;
   padding: 20px;
   transition: .2s ease;
-  background-color: $white;
+  background-color: #00f7f7;
 
   &:hover {
     @extend .shadow;
@@ -92,7 +101,7 @@ a.post-title {
   }
 
   a {
-    color: $text-color;
+    color: #00022b;
     border-bottom: 1px dotted $border-color;
 
     &:hover {
