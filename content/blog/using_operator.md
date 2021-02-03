@@ -1,5 +1,5 @@
 ---
-title: "Getting Started with ArtemisCloud Operator"  
+title: "Getting Started with the ArtemisCloud Operator"  
 type: "featured"
 description: "Steps to get operator up and running and basic broker operations"
 draft: false
