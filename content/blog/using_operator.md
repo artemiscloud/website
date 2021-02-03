@@ -1,61 +1,76 @@
 ---
-title: "Getting Start with ActiveMQ Artemis Operator"  
+title: "Getting Started with ActiveMQ Artemis Operator"  
 type: "featured"
 description: "Steps to get operator up and running and basic broker operations"
 draft: false
 ---
-In [ArtemisCloud](https://github.com/artemiscloud) ActiveMQ Artemis operator is a powerful tool for you to configure and manage ActiveMQ Artemis broker resources in a cloud environment. You can get it up and running in just a few steps.
+The [ArtemisCloud](https://github.com/artemiscloud) Operator is a powerful tool that allows you to configure and 
+manage ActiveMQ Artemis broker resources in a cloud environment. You can get it up and running in just a few steps.
 
 ### Prerequisite
-Before you start you need have access to a running Kubernetes cluster environment. A [Minikube](https://minikube.sigs.k8s.io/docs/start/) running on your laptop will just do fine. The ActiveMQ Artemis operator also runs in a Openshift cluster environment like [CodeReady Container](https://developers.redhat.com/products/codeready-containers/overview). In this blog we assume you have Kubernetes cluster environment. (If you use CodeReady the client tool is **oc** in place of **kubectl**)
+Before you start you need have access to a running Kubernetes cluster environment. A [Minikube](https://minikube.sigs.k8s.io/docs/start/) 
+running on your laptop will just do fine. The ActiveMQ Artemis operator also runs in a Openshift cluster environment 
+like [CodeReady Container](https://developers.redhat.com/products/codeready-containers/overview). In this blog we assume 
+you have Kubernetes cluster environment. (If you use CodeReady the client tool is **oc** in place of **kubectl**)
 
 ### Step 1 - Preparing for deployment
 * Clone the ActiveMQ Artemis operator repo:
+```shell script
       $ git clone https://github.com/artemiscloud/activemq-artemis-operator.git
+```
 * Go to the local repo root and set up related account and permissions needed for operator deployment.
+```shell script      
       $ cd activemq-artemis-operator
       $ kubectl create -f deploy/service_account.yaml
       $ kubectl create -f deploy/role.yaml
       $ kubectl create -f deploy/role_binding.yaml
+```
 * Deploy all the CRDs that the operator supports.
+```shell script   
       # the broker crd
       $ kubectl create -f deploy/crds/broker_activemqartemis_crd.yaml
       # the address crd
       $ kubectl create -f deploy/crds/broker_activemqartemisaddress_crd.yaml
       # the scaledown crd
       $ kubectl create -f deploy/crds/broker_activemqartemisscaledown_crd.yaml
-Note: If you see some warning messages while deploying the crds like:
-      Warning: apiextensions.k8s.io/v1beta1 CustomResourceDefinition is deprecated in v1.16+, unavailable in v1.22+; use apiextensions.k8s.io/v1 CustomResourceDefinition
-customresourcedefinition.apiextensions.k8s.io/activemqartemises.broker.amq.io created
-You can safely ignore them.
+```      
+
+> **_NOTE:_**    If you see some warning messages while deploying the crds like:
+    *"Warning: apiextensions.k8s.io/v1beta1 CustomResourceDefinition is deprecated in v1.16+, unavailable in v1.22+; use 
+    apiextensions.k8s.io/v1 CustomResourceDefinition customresourcedefinition.apiextensions.k8s.io/activemqartemises.broker.amq.io created"*
+    You can safely ignore them.
 
 ### Step 2 - Deploying the operator
 Run the command to deploy the operator:
-
+```shell script
       $ kubectl create -f deploy/operator.yaml
+```
 After that you may need a few moment for the operator to fully start.
 You can verify the operator status by running the command and looking at the output:
-
+```shell script
       $ kubectl get pod
       NAME                                         READY   STATUS    RESTARTS   AGE
       activemq-artemis-operator-58bb658f4c-cjqvk   1/1     Running   0          104s
+```
 Make sure the **STATUS** is **Running**.
 
 ### Step 3 - Deploying ActiveMQ Artemis Broker in Cloud
 Now with a running operator, it's time to deploy the broker. Run:
-
+```shell script
       kubectl create -f deploy/examples/artemis-basic-deployment.yaml
+```
 and watch the broker pod to start up:
-
+```shell script
       $ kubectl get pod
       NAME                                         READY   STATUS    RESTARTS   AGE
       activemq-artemis-operator-58bb658f4c-cjqvk   1/1     Running   1          12h
       ex-aao-ss-0                                  1/1     Running   0          85s
+```
 What happened behind the scene is that the operator watches the CR deployment in the target namespace and when the broker CR is deployed the operator will configure and deploy the broker pod into the cluster.
 
 To see some details of the broker pod startup you can get the console log
 from the pod:
-
+```shell script
       $ kubectl logs ex-aao-ss-0
       -XX:+UseParallelOldGC -XX:MinHeapFreeRatio=10 -XX:MaxHeapFreeRatio=20 -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -XX:MaxMetaspaceSize=100m -XX:+ExitOnOutOfMemoryError
       Removing provided -XX:+UseParallelOldGC in favour of artemis.profile provided option
@@ -117,13 +132,14 @@ from the pod:
       2021-02-03 03:30:48,332 INFO  [org.apache.activemq.artemis] AMQ241001: HTTP Server started at http://ex-aao-ss-0.ex-aao-hdls-svc.default.svc.cluster.local:8161
       2021-02-03 03:30:48,333 INFO  [org.apache.activemq.artemis] AMQ241002: Artemis Jolokia REST API available at http://ex-aao-ss-0.ex-aao-hdls-svc.default.svc.cluster.local:8161/console/jolokia
       2021-02-03 03:30:48,333 INFO  [org.apache.activemq.artemis] AMQ241004: Artemis Console available at http://ex-aao-ss-0.ex-aao-hdls-svc.default.svc.cluster.local:8161/console
-
+```
 ### Step 4 - Create a Queue with the Operator
 Now let's create a message queue in the broker. Run:
-
+```shell script
       kubectl create -f deploy/examples/address-queue-create-auto-removed.yaml
+```
 The _address-queue-create-auto-removed.yaml_ is another kind of custom resources supported by the ActiveMQ Artemis operator. Below is its content:
-
+```yaml
       apiVersion: broker.amq.io/v2alpha2
       kind: ActiveMQArtemisAddress
       metadata:
@@ -133,12 +149,13 @@ The _address-queue-create-auto-removed.yaml_ is another kind of custom resources
       queueName: myQueue0
       routingType: anycast
       removeFromBrokerOnDelete: true
-
+```
 It tells the operator to create a queue named **myQueue0** on address **myAddress0** on each broker it manages.
 
 After the CR is deployed you can observe the queue on broker:
 
 <a name="queuestat"></a>
+```shell script
       $ kubectl exec ex-aao-ss-0 -- /bin/bash /home/jboss/amq-broker/bin/artemis queue stat --user admin --password admin --url tcp://ex-aao-ss-0:61616
       OpenJDK 64-Bit Server VM warning: If the number of processors is expected to increase from one, then you should configure the number of parallel GC threads appropriately using -XX:ParallelGCThreads=N
       Connection brokerURL = tcp://ex-aao-ss-0:61616
@@ -147,12 +164,13 @@ After the CR is deployed you can observe the queue on broker:
       |ExpiryQueue              |ExpiryQueue              |0              |0             |0              |0                |0              |0               |ANYCAST      |
       |activemq.management.2396ff3b-d2d3-40da-ace1-068f76d55fe0|activemq.management.2396ff3b-d2d3-40da-ace1-068f76d55fe0|1              |0             |0              |0                |0              |0               |MULTICAST    |
       |myQueue0                 |myAddress0               |0              |0             |0              |0                |0              |0               |ANYCAST      |
+```
 
 ### Step 5 - Sending and Receiving messages
 Finally you can send some messages to the broker and receive them. Here we just use the artemis cli tool that comes with the deployed broker instance for the test.
 
 Run the following command to send 100 messages:
-
+```shell script
       $ kubectl exec ex-aao-ss-0 -- /bin/bash /home/jboss/amq-broker/bin/artemis producer --user admin --password admin --url tcp://ex-aao-ss-0:61616 --destination myQueue0::myAddress0 --message-count 100
       OpenJDK 64-Bit Server VM warning: If the number of processors is expected to increase from one, then you should configure the number of parallel GC threads appropriately using -XX:ParallelGCThreads=N
       Connection brokerURL = tcp://ex-aao-ss-0:61616
@@ -161,9 +179,9 @@ Run the following command to send 100 messages:
       Producer ActiveMQQueue[myQueue0::myAddress0], thread=0 Produced: 100 messages
       Producer ActiveMQQueue[myQueue0::myAddress0], thread=0 Elapsed time in second : 0 s
       Producer ActiveMQQueue[myQueue0::myAddress0], thread=0 Elapsed time in milli second : 548 milli seconds
-
+````
 Now if you check the queue statistics using the command mentioned in [Step 4](#queuestat) you will see the message count is 100:
-
+```shell script
       $ kubectl exec ex-aao-ss-0 -- /bin/bash /home/jboss/amq-broker/bin/artemis queue stat --user admin --password admin --url tcp://ex-aao-ss-0:61616
       OpenJDK 64-Bit Server VM warning: If the number of processors is expected to increase from one, then you should configure the number of parallel GC threads appropriately using -XX:ParallelGCThreads=N
       Connection brokerURL = tcp://ex-aao-ss-0:61616
@@ -173,7 +191,7 @@ Now if you check the queue statistics using the command mentioned in [Step 4](#q
       |activemq.management.d5a658e6-45bb-4764-a507-6a9c1f62da00|activemq.management.d5a658e6-45bb-4764-a507-6a9c1f62da00|1              |0             |0              |0                |0              |0               |MULTICAST    |
       |myAddress0               |myQueue0                 |0              |100           |100            |0                |0              |0               |ANYCAST      |
       |myQueue0                 |myAddress0               |0              |0             |0              |0                |0              |0               |ANYCAST      |
-
+```
 ### Further information
 
 * [ArtemisCloud Github Repo](https://github.com/artemiscloud)

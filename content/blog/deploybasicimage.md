@@ -1,7 +1,7 @@
 ---
 title: "Deploying the Basic Broker Image"
 # post type (regular/featured)
-type: "featured"
+type: "regular"
 # meta description
 description: "Deploying the Basic Broker Image"
 # post draft

@@ -8,8 +8,7 @@
 <section class="section">
   <div class="container">
     <div class="row">
-      {{ $paginator := .Paginate .Data.Pages }}
-      {{ range $paginator.Pages.ByDate }}
+      {{ range (where .Data.Pages "Type" "featured").ByDate }}
       {{ if (eq .Type "featured") }}
         <div class="col-12 mb-5 pb-5">
           <div class="row align-items-center">
@@ -22,8 +21,7 @@
         </div>
       {{ end }}
       {{ end }}
-      {{ $paginator := .Paginate .Data.Pages }}
-      {{ range $paginator.Pages.ByDate }}
+      {{ range (.Paginate (.Pages.ByDate.Reverse)).Pages -}}
         <div class="col-lg-4 col-sm-6 mb-5">
           <div class="card border-0">
             <div class="card-body p-0">
