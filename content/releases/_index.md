@@ -6,10 +6,10 @@ description: "A Page listing the latest releases"
 draft: false
 ---
 
-| Container Image | Version |
-| ----------- | ----------- |
-| Base | [0.1.1]() |
-| Operator | [0.2.1]() |
-| Kubernetes Operator | [0.18.1]() |
-| Init Image | [0.2.3]() |
+| **Container Image** | **Latest Version** | **Description** | **Docker Pull Command** |
+| ----------- | ----------- | ----------- | ----------- |
+| Base Container | 0.1.1 | A Basic Container Image to run the broker | quay.io/artemiscloud/activemq-artemis-broker:0.1.1 |
+| Kubernetes Container | 0.2.1 | A kubernetes container that will run the broker | quay.io/artemiscloud/activemq-artemis-broker-kubernetes:0.2.1 | 
+| Init Container | 0.2.3 | A container image that create a broker configuration |  quay.io/artemiscloud/activemq-artemis-broker-init:0.2.3 | 
+| Kubernetes Operator | 0.18.1 | A Kubernetes Operator for deploying brokers | quay.io/artemiscloud/activemq-artemis-operator:0.18.1 |
 
