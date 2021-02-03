@@ -38,3 +38,11 @@ You can add a youtube video by adding the following
 ```
     {{< youtube C0DPdy98e4c >}}
 ```
+
+### Website Color scheme
+
+The following are the 3 main colours used in the website, use these when updating any css etc
+
+00f7f7
+00a4a7
+00022b
