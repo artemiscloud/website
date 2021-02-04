@@ -4,17 +4,17 @@ type: "featured"
 description: "Steps to get operator up and running and basic broker operations"
 draft: false
 ---
-The [ArtemisCloud](https://github.com/artemiscloud) Operator is a powerful tool that allows you to configure and 
+The [ArtemisCloud](https://github.com/artemiscloud) Operator is a powerful tool that allows you to configure and
 manage ActiveMQ Artemis broker resources in a cloud environment. You can get it up and running in just a few steps.
 
 ### Prerequisite
-Before you start you need have access to a running Kubernetes cluster environment. A [Minikube](https://minikube.sigs.k8s.io/docs/start/) 
-running on your laptop will just do fine. The ActiveMQ Artemis operator also runs in a Openshift cluster environment 
-like [CodeReady Container](https://developers.redhat.com/products/codeready-containers/overview). In this blog we assume 
+Before you start you need have access to a running Kubernetes cluster environment. A [Minikube](https://minikube.sigs.k8s.io/docs/start/)
+running on your laptop will just do fine. The ArtemisCloud operator also runs in a Openshift cluster environment
+like [CodeReady Container](https://developers.redhat.com/products/codeready-containers/overview). In this blog we assume
 you have Kubernetes cluster environment. (If you use CodeReady the client tool is **oc** in place of **kubectl**)
 
 ### Step 1 - Preparing for deployment
-* Clone the ActiveMQ Artemis operator repo:
+* Clone the ArtemisCloud operator repo:
 ```shell script
       $ git clone https://github.com/artemiscloud/activemq-artemis-operator.git
 ```
@@ -36,7 +36,7 @@ you have Kubernetes cluster environment. (If you use CodeReady the client tool i
 ```      
 
 > **_NOTE:_**    If you see some warning messages while deploying the crds like:
-    *"Warning: apiextensions.k8s.io/v1beta1 CustomResourceDefinition is deprecated in v1.16+, unavailable in v1.22+; use 
+    *"Warning: apiextensions.k8s.io/v1beta1 CustomResourceDefinition is deprecated in v1.16+, unavailable in v1.22+; use
     apiextensions.k8s.io/v1 CustomResourceDefinition customresourcedefinition.apiextensions.k8s.io/activemqartemises.broker.amq.io created"*
     You can safely ignore them.
 
@@ -138,7 +138,7 @@ Now let's create a message queue in the broker. Run:
 ```shell script
       kubectl create -f deploy/examples/address-queue-create-auto-removed.yaml
 ```
-The _address-queue-create-auto-removed.yaml_ is another kind of custom resources supported by the ActiveMQ Artemis operator. Below is its content:
+The _address-queue-create-auto-removed.yaml_ is another kind of custom resources supported by the ArtemisCloud operator. Below is its content:
 ```yaml
       apiVersion: broker.amq.io/v2alpha2
       kind: ActiveMQArtemisAddress
