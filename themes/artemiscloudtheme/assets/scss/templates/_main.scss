@@ -1,7 +1,7 @@
 // banner
 .banner {
   //background-color: #563175;
-  background: linear-gradient(to right bottom, #00022b 0%, #00f7f7 100%);
+  background: linear-gradient(to right bottom, $bg-color 0%, $fg-color 100%);
   padding: 100px 0 55px;
   h1 {
     color: $white;
@@ -12,19 +12,19 @@
 }
 
 th {
-  border: 1px solid #00022b;
-  background-color: #00f7f7;
+  border: 1px solid $bg-color;
+  background-color: $fg-color;
 }
 
 tr {
-  border: 1px solid #00022b;
+  border: 1px solid $bg-color;
 }
 
 .feature-card {
   border-radius: 10px;
   padding: 20px;
   transition: .2s ease;
-  background-color: #00f7f7;
+  background-color: $fg-color;
 
   &:hover {
     @extend .shadow;
@@ -101,7 +101,7 @@ a.post-title {
   }
 
   a {
-    color: #00022b;
+    color: $bg-color;
     border-bottom: 1px dotted $border-color;
 
     &:hover {
