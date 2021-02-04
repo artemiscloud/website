@@ -1,0 +1,42 @@
+{{ define "main" }}
+
+{{ partial "page-header.html" . }}
+<div class="container">
+<section class="section">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 mx-auto text-center">
+      {{ .Content }}
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 text-center">
+        <h2 class="section-title"></h2>
+      </div>
+      {{ range (where .Data.Pages "Type" "social").ByDate }}
+      {{ if (eq .Type "social") }}
+      <div class="col-md-4 col-sm-6 mb-4">
+        <div class="social-card text-center">
+          <img src={{ .Params.image | absURL }} alt="{{ .Title }}" class="img-fluid w-25 rounded mb-4">
+          <h4 class="mb-2">{{ .Title | markdownify }}</h4>
+          <p>{{ .Content | markdownify }}</p>
+        </div>
+      </div>
+      {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</section>
+</div>
+
+
+<!-- call to action -->
+
+<!-- /call to action -->
+
+{{ end }}

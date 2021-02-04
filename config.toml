@@ -92,7 +92,7 @@ preloader = "" # use jpg, png, svg or gif format.
 [[params.social]]
 title = "twitter"
 icon = "ti-twitter-alt" # themify icon : https://themify.me/themify-icons
-link = "https://twitter.com/theartemiscloud"
+link = "https://twitter.com/artemiscloudio"
 
 [[params.social]]
 title = "github"
