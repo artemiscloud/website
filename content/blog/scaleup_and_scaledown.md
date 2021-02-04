@@ -212,5 +212,5 @@ It shows queue TEST's message count is **200** now!
 
 ### More information
 
-* Check out [artemiscloud github repo]
+* Check out [artemiscloud project repo](https://github.com/artemiscloud)
 * Reach the [dev team at slack](artemiscloudio.slack.com) for questions/issues/help
