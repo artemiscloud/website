@@ -1,6 +1,6 @@
 ---
 title: "Scaling Up and Down Brokers with ArtemisCloud Operator"  
-type: "featured"
+type: "regular"
 description: "How to use operator to scale up and down broker pods"
 draft: false
 ---
