@@ -1,6 +1,6 @@
 ####################### Banner #########################
 banner:
-  title: "ArtemisCloud - Artemis on Kubernetes"
+  title: "ArtemisCloud.io - Artemis on Kubernetes"
   content: "ArtemisCloud allows you to expose the power of ActiveMQ Artemis with kubernetes. ArtemisCloud is a collection of tools, container images and content that allows the quick and easy deployment of the Artemis Broker on Kubernetes"
 
 ##################### Feature ##########################
