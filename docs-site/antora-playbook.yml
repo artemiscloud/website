@@ -1,0 +1,41 @@
+site:
+  title: Antora Docs
+  start_page: artemiscloud-docs::index.adoc
+content:
+  sources:
+    - url: ../../artemiscloud-docs
+      branches: main
+
+      start_path: docs
+ui:
+  bundle:
+    url: ./ui-bundle.zip
+asciidoc:
+  attributes:
+    source-language: asciidoc@
+    xrefstyle: short@
+    UpstreamBuild: 'this is here for upstream/downstream ifdef'
+    context: 'foo'
+    OperatorName: 'ArtemisCloud'
+    OperatorCrdName: 'activemq-artemis-operator'
+    #OperatorCrdName: 'amq-broker-operator'
+    ClientCommand: 'kubectl'
+    #ClientCommand: 'oc'
+    ClientTool: 'Kubernetes'
+    #ClientTool: 'OpenShift'
+    OperatorGithubVersion: '0.18.1'
+    #OperatorGithubVersion: {brokerversionwithmicro}
+    OperatorExamplePrefix: 'activemq-artemis-operator-'
+    #OperatorExamplePrefix: 'amq-broker-operator-'
+    OperatorExampleSuffix: '.zip'
+    #OperatorExampleSuffix: '-1ocp-install-examples.zip'
+    BrokerName: 'ActiveMQ Artemis'
+    BrokerVersion: ''
+    OpenShiftContainerName: 'Kubernetes'
+    brokerversionwithmicro: ''
+    brokerMainCRD: 'broker_activemqartemis'
+    brokerAddressingCRD: 'broker_activemqartemisaddress'
+    brokerScaledownCRD: 'broker_activemqartemisaddress'
+    RedHatContainerRegistry: 'foo'
+    OperatorImageRepo: 'foo'
+    latestOperatorTag: 'foo'
