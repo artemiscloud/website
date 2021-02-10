@@ -21,7 +21,7 @@
       {{ range (where .Data.Pages "Type" "social").ByDate }}
       {{ if (eq .Type "social") }}
       <div class="col-md-4 col-sm-6 mb-4">
-        <div class="social-card text-center">
+        <div class="feature-card text-center">
           <img src={{ .Params.image | absURL }} alt="{{ .Title }}" class="img-fluid w-25 rounded mb-4">
           <h4 class="mb-2">{{ .Title | markdownify }}</h4>
           <p>{{ .Content | markdownify }}</p>
