@@ -1,5 +1,5 @@
 site:
-  title: Antora Docs
+  title: Documentation
   start_page: artemiscloud-docs::index.adoc
 content:
   sources:
@@ -15,7 +15,9 @@ asciidoc:
     source-language: asciidoc@
     xrefstyle: short@
     UpstreamBuild: 'this is here for upstream/downstream ifdef'
-    context: 'foo'
+    context: ''
+    Vendor: 'quay.io'
+    #Vendor: 'Red Hat'
     OperatorName: 'ArtemisCloud'
     OperatorCrdName: 'activemq-artemis-operator'
     #OperatorCrdName: 'amq-broker-operator'
@@ -23,19 +25,30 @@ asciidoc:
     #ClientCommand: 'oc'
     ClientTool: 'Kubernetes'
     #ClientTool: 'OpenShift'
+    ClientToolArticle: 'a Kubernetes'
+    #ClientToolArticle: 'an OpenShift'
     OperatorGithubVersion: '0.18.1'
     #OperatorGithubVersion: {brokerversionwithmicro}
     OperatorExamplePrefix: 'activemq-artemis-operator-'
     #OperatorExamplePrefix: 'amq-broker-operator-'
     OperatorExampleSuffix: '.zip'
     #OperatorExampleSuffix: '-1ocp-install-examples.zip'
+    namespaceCommand: '-n project-name'
+    #namespaceCommand: ''
     BrokerName: 'ActiveMQ Artemis'
     BrokerVersion: ''
     OpenShiftContainerName: 'Kubernetes'
     brokerversionwithmicro: ''
     brokerMainCRD: 'broker_activemqartemis'
     brokerAddressingCRD: 'broker_activemqartemisaddress'
-    brokerScaledownCRD: 'broker_activemqartemisaddress'
-    RedHatContainerRegistry: 'foo'
-    OperatorImageRepo: 'foo'
-    latestOperatorTag: 'foo'
+    brokerScaledownCRD: 'broker_activemqartemisscaledown'
+    RedHatContainerRegistry: 'quay.io/artemiscloud'
+    OperatorImageRepo: 'activemq-artemis-operator'
+    latestOperatorTag: '0.18.1'
+    mainBrokerImageRepo: 'activemq-artemis-broker-kubernetes'
+    latestBrokerImageTag: '0.2.1'
+    #latestBrokerImageTag: BrokerVersion
+    clusterRoleLink: 'https://kubernetes.io/docs/reference/access-authn-authz/rbac/'
+    #clusterRoleLink: 'https://docs.openshift.com/container-platform/4.5/operators/understanding/crds/crd-extending-api-with-crds.html#crd-creating-aggregated-cluster-role_crd-extending-api-with-crds'
+    persistentVolumeslink: 'https://kubernetes.io/docs/concepts/storage/persistent-volumes/'
+    #persistentVolumeslink: 'persistentVolumeslink: 'https://kubernetes.io/docs/concepts/storage/persistent-volumes/''

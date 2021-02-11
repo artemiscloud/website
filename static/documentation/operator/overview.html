@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ArtemisCloud :: Documentation</title>
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="/website/css/site.css">
+  <link rel="stylesheet" href="https://artemiscloud.github.io/website/plugins/bootstrap/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://artemiscloud.github.io/website/plugins/themify-icons/themify-icons.css">
+
+  <link rel="stylesheet" href="https://artemiscloud.github.io/website/plugins/slick/slick.css">
+
+
+  <!-- Main Stylesheet -->
+
+  <link href="https://artemiscloud.github.io/website/scss/style.min.css" rel="stylesheet" media="screen"/>
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="https://artemiscloud.github.io/website/images/favicon.png" type="image/x-icon">
+  <link rel="icon" href="https://artemiscloud.github.io/website/images/favicon.png" type="image/x-icon">
+
+      <!-- mobile responsive meta -->
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+      <meta name="description" content="A Page listing the latest releases">
+      <meta name="author" content="Themefisher">
+      <meta name="generator" content="Hugo 0.75.1" />
+
+      <meta property="og:title" content="Releases" />
+      <meta property="og:description" content="A Page listing the latest releases" />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://artemiscloud.github.io/website/releases/" />
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body>
+<header class="navigation">
+  <div class="container">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+      <a class="navbar-brand" href="https://artemiscloud.github.io/website/">
+
+        <img width="250px" class="img-fluid" src="https://artemiscloud.github.io/website/images/logo.png" alt="Artemis Cloud">
+
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation">
+        <i class="ti-menu h3"></i>
+      </button>
+
+      <div class="collapse navbar-collapse text-center" id="navigation">
+        <ul class="navbar-nav mx-auto">
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://artemiscloud.github.io/website/blog">Blog</a>
+          </li>
+
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://artemiscloud.github.io/website/docs">Documentation</a>
+          </li>
+
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://artemiscloud.github.io/website/releases">Releases</a>
+          </li>
+
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://artemiscloud.github.io/website/community">Community</a>
+          </li>
+
+
+        </ul>
+
+
+      </div>
+    </nav>
+  </div>
+</header>
+<div class="body">
+<div class="nav-container" data-component="artemiscloud-docs" data-version="dev">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul>
+  <li class="nav-item" data-depth="0">
+    <span class="nav-text">Introduction</span>
+<ul>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Welcome</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <span class="nav-text">The Broker Operator</span>
+<ul>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="installing-operator-cli.html">Installing The Operator</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="deploying-brokers-operator.html">Creating Broker Deployments</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <span class="nav-text">Reference</span>
+<ul>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="reference.html">Custom Resource configuration reference</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+    </div>
+  </aside>
+</div>
+<main>
+  <div class="content">
+<article class="doc">
+<div class="sect1">
+<h2 id="con_br-crd-overview_"><a class="anchor" href="#con_br-crd-overview_"></a>Overview of the ArtemisCloud Operator Custom Resource Definitions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In general, a Custom Resource Definition (CRD) is a schema of configuration items that you can modify for a custom Kubernetes object deployed with an Operator. By creating a corresponding Custom Resource (CR) instance, you can specify values for configuration items in the CRD.
+If you are an Operator developer, what you expose through a CRD essentially becomes the API for how a deployed object is configured and used. You can directly access the CRD through regular HTTP <code>curl</code> commands, because the CRD gets exposed automatically through Kubernetes.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Main broker CRD</dt>
+<dd>
+<p>You deploy a CR instance based on this CRD to create and configure a broker deployment.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>broker_activemqartemis_crd</code> file in the <code>crds</code> directory of the Operator installation archive (Kubernetes CLI installation method)</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Address CRD</dt>
+<dd>
+<p>You deploy a CR instance based on this CRD to create addresses and queues for a broker deployment.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>broker_activemqartemisaddress_crd</code> file in the <code>crds</code> directory of the Operator installation archive (Kubernetes CLI installation method)</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Scaledown CRD</dt>
+<dd>
+<p>The <strong>Operator</strong> automatically creates a CR instance based on this CRD when instantiating a scaledown controller for message migration.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>broker_activemqartemisscaledown_crd</code> file in the <code>crds</code> directory of the Operator installation archive (Kubernetes CLI installation method)</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+<div class="ulist">
+<div class="title">Additional resources</div>
+<ul>
+<li>
+<p>To learn how to install the ActiveMQ Artemis Operator (and all included CRDs) using:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The Kubernetes CLI, see <a href="installing-operator-cli.html#installing-broker-operator-cli_" class="page">Installing the Operator</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>For complete configuration references to use when creating CR instances based on the main broker and address CRDs, see:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="reference.html#broker-crd_" class="page">Broker Custom Resource configuration reference</a></p>
+</li>
+<li>
+<p><a href="reference.html#addressing-crd_" class="page">Address Custom Resource configuration reference</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="con_br-cr-overview_"><a class="anchor" href="#con_br-cr-overview_"></a>Overview of the ActiveMQ Artemis Operator sample Custom Resources</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The AMQ Broker Operator archive that you download and extract during installation includes sample Custom Resource (CR) files in the <code>deploy/crs</code> directory. These sample CR files enable you to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Deploy a minimal broker without SSL or clustering.</p>
+</li>
+<li>
+<p>Define addresses.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The broker Operator archive that you download and extract also includes CRs for example deployments in the <code>deploy/examples</code> directory, as listed below.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>artemis-basic-deployment.yaml</code></dt>
+<dd>
+<p>Basic broker deployment.</p>
+</dd>
+<dt class="hdlist1"><code>artemis-persistence-deployment.yaml</code></dt>
+<dd>
+<p>Broker deployment with persistent storage.</p>
+</dd>
+<dt class="hdlist1"><code>artemis-cluster-deployment.yaml</code></dt>
+<dd>
+<p>Deployment of clustered brokers.</p>
+</dd>
+<dt class="hdlist1"><code>artemis-persistence-cluster-deployment.yaml</code></dt>
+<dd>
+<p>Deployment of clustered brokers with persistent storage.</p>
+</dd>
+<dt class="hdlist1"><code>artemis-ssl-deployment.yaml</code></dt>
+<dd>
+<p>Broker deployment with SSL security.</p>
+</dd>
+<dt class="hdlist1"><code>artemis-ssl-persistence-deployment.yaml</code></dt>
+<dd>
+<p>Broker deployment with SSL security and persistent storage.</p>
+</dd>
+<dt class="hdlist1"><code>artemis-aio-journal.yaml</code></dt>
+<dd>
+<p>Use of asynchronous I/O (AIO) with the broker journal.</p>
+</dd>
+<dt class="hdlist1"><code>address-queue-create.yaml</code></dt>
+<dd>
+<p>Address and queue creation.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="con-br-operator-deployment-notes_"><a class="anchor" href="#con-br-operator-deployment-notes_"></a>Operator deployment notes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section describes some important considerations when planning an Operator-based deployment</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Deploying the Custom Resource Definitions (CRDs) that accompany the ActiveMQ Artemis Operator requires cluster administrator privileges for your Kubernetes  cluster. When the Operator is deployed, non-administrator users can create broker instances via corresponding Custom Resources (CRs). To enable regular users to deploy CRs, the cluster administrator must first assign roles and permissions to the CRDs. For more information, see <a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/">Creating cluster roles for Custom Resource Definitions</a> in the Kubernetes documentation.</p>
+</li>
+<li>
+<p>When you update your cluster with the CRDs for the latest Operator version, this update affects <strong>all</strong> projects in the cluster. Any broker Pods deployed from previous versions of the Operator might become unable to update their status.
+To fix this issue for an affected project, you must also upgrade that project to use the latest version of the Operator.</p>
+</li>
+<li>
+<p>You cannot create more than one broker deployment in a given Kubernetes  project by deploying multiple broker Custom Resource (CR) instances. However, when you have created a broker deployment in a project, you <strong>can</strong> deploy multiple CR instances for addresses.</p>
+</li>
+<li>
+<p>If you intend to deploy brokers with persistent storage and do not have container-native storage in your Kubernetes  cluster, you need to manually provision Persistent Volumes (PVs) and ensure that these are available to be claimed by the Operator. For example, if you want to create a cluster of two brokers with persistent storage (that is, by setting <code>persistenceEnabled=true</code> in your CR), you need to have two persistent volumes available. By default, each broker instance requires storage of 2 GiB.</p>
+<div class="paragraph">
+<p>If you specify <code>persistenceEnabled=false</code> in your CR, the deployed brokers uses <em>ephemeral</em> storage. Ephemeral storage means that that every time you restart the broker Pods, any existing data is lost.</p>
+</div>
+<div class="paragraph">
+<p>For more information about provisioning persistent storage in Kubernetes, see:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes">Persistent Volumes</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="bg-light section pb-0">
+  <div class="container">
+    <div class="row">
+        <div class="col-md-3 col-sm-6 mb-10">
+
+
+            <ul class="list-inline social-icons">
+
+                <li class="list-inline-item"><a href="https://twitter.com/artemiscloudio"><i class="ti-twitter-alt"></i></a></li><li class="list-inline-item">twitter</li>
+
+                <li class="list-inline-item"><a href="https://github.com/ArtemisCloud"><i class="ti-github"></i></a></li><li class="list-inline-item">github</li>
+
+            </ul>
+
+        </div>
+    </div>
+
+  </div>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
