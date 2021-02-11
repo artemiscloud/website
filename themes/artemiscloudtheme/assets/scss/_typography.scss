@@ -85,6 +85,11 @@ p,
   font-family: $primary-font;
 }
 
+.feature-card > p {
+  color: $text-color-dark;
+}
+
+
 small {
   font-size: 88%;
 }
