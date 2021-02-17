@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ArtemisCloud :: Documentation</title>
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="/website/css/site.css">
+  <link rel="stylesheet" href="https://artemiscloud.github.io/website/plugins/bootstrap/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://artemiscloud.github.io/website/plugins/themify-icons/themify-icons.css">
+
+  <link rel="stylesheet" href="https://artemiscloud.github.io/website/plugins/slick/slick.css">
+
+
+  <!-- Main Stylesheet -->
+
+  <link href="https://artemiscloud.github.io/website/scss/style.min.css" rel="stylesheet" media="screen"/>
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="https://artemiscloud.github.io/website/images/favicon.png" type="image/x-icon">
+  <link rel="icon" href="https://artemiscloud.github.io/website/images/favicon.png" type="image/x-icon">
+
+      <!-- mobile responsive meta -->
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+      <meta name="description" content="A Page listing the latest releases">
+      <meta name="author" content="Themefisher">
+      <meta name="generator" content="Hugo 0.75.1" />
+
+      <meta property="og:title" content="Releases" />
+      <meta property="og:description" content="A Page listing the latest releases" />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://artemiscloud.github.io/website/releases/" />
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body>
+<header class="navigation">
+  <div class="container">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+      <a class="navbar-brand" href="https://artemiscloud.github.io/website/">
+
+        <img width="250px" class="img-fluid" src="https://artemiscloud.github.io/website/images/logo.png" alt="Artemis Cloud">
+
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation">
+        <i class="ti-menu h3"></i>
+      </button>
+
+      <div class="collapse navbar-collapse text-center" id="navigation">
+        <ul class="navbar-nav mx-auto">
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://artemiscloud.github.io/website/blog">Blog</a>
+          </li>
+
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://artemiscloud.github.io/website/docs">Documentation</a>
+          </li>
+
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://artemiscloud.github.io/website/releases">Releases</a>
+          </li>
+
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://artemiscloud.github.io/website/community">Community</a>
+          </li>
+
+
+        </ul>
+
+
+      </div>
+    </nav>
+  </div>
+</header>
+<div class="body">
+<div class="nav-container" data-component="artemiscloud-docs" data-version="dev">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul>
+  <li class="nav-item" data-depth="0">
+    <span class="nav-text">Introduction</span>
+<ul>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Welcome</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <span class="nav-text">The Broker Operator</span>
+<ul>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="installing-operator-cli.html">Installing The Operator</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="deploying-brokers-operator.html">Creating Broker Deployments</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <span class="nav-text">Reference</span>
+<ul>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="reference.html">Custom Resource configuration reference</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+    </div>
+  </aside>
+</div>
+<main>
+  <div class="content">
+<article class="doc">
+<div class="sect1">
+<h2 id="ref_br-custom-resource-definition-config-reference_"><a class="anchor" href="#ref_br-custom-resource-definition-config-reference_"></a>Custom Resource configuration reference</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A Custom Resource Definition (CRD) is a schema of configuration items for a custom Kubernetes object deployed with an Operator. By deploying a corresponding Custom Resource (CR) instance, you specify values for configuration items shown in the CRD.</p>
+</div>
+<div class="paragraph">
+<p>The following sub-sections detail the configuration items that you can set in Custom Resource instances based on the main broker and addressing CRDs.</p>
+</div>
+<div class="sect2">
+<h3 id="broker-crd_"><a class="anchor" href="#broker-crd_"></a>Broker Custom Resource configuration reference</h3>
+<div class="paragraph">
+<p>A CR instance based on the main broker CRD enables you to configure brokers for deployment in a Kubernetes project. The following table describes the items that you can configure in the CR instance.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Configuration items marked with an asterisk (<strong>*</strong>) are required in any corresponding Custom Resource (CR) that you deploy. If you do not explicitly specify a value for a non-required item, the configuration uses the default value.
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 35.4545%;">
+<col style="width: 37.2727%;">
+<col style="width: 27.2728%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Entry</th>
+<th class="tableblock halign-left valign-top">Sub-entry</th>
+<th class="tableblock halign-left valign-top">Description and usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>adminUser*</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Administrator user name required for connecting to the broker and management console.</p>
+<p class="tableblock">If you do not specify a value, the value is automatically generated and stored in a secret. The default secret name has a format of <code><em>&lt;Custom-Resource-name&gt;</em>-credentials-secret</code>. For example, <code>my-broker-deployment-credentials-secret</code>.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: my-user</p>
+<p class="tableblock"><strong>Default value</strong>: Automatically-generated, random value</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>adminPassword*</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Administrator password required for connecting to the broker and management console.</p>
+<p class="tableblock">If you do not specify a value, the value is automatically generated and stored in a secret. The default secret name has a format of <code><em>&lt;Custom-Resource-name&gt;</em>-credentials-secret</code>. For example, <code>my-broker-deployment-credentials-secret</code>.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: my-password</p>
+<p class="tableblock"><strong>Default value</strong>: Automatically-generated, random value</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deploymentPlan*</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Broker deployment configuration</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>image*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Full path of the broker container image to be pulled from the Red Hat Container Registry. The default container image tag matches the ActiveMQ Artemis version.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: quay.io/artemiscloud/activemq-artemis-broker-kubernetes:latest</p>
+<p class="tableblock"><strong>Default value</strong>: quay.io/artemiscloud/activemq-artemis-broker-kubernetes:</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>size*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of broker Pods to create in the deployment.</p>
+<p class="tableblock">If you specify a value of 2 or greater, your broker deployment is clustered by default. The cluster user name and password are automatically generated and stored in the same secret as <code>adminUser</code> and <code>adminPassword</code>, by default.</p>
+<p class="tableblock"><strong>Type</strong>: int</p>
+<p class="tableblock"><strong>Example</strong>: 1</p>
+<p class="tableblock"><strong>Default value</strong>: 2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>requireLogin</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify whether login credentials are required to connect to the broker.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: false</p>
+<p class="tableblock"><strong>Default value</strong>: true</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>persistenceEnabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify whether to use journal storage for each broker Pod in the deployment. If set to <code>true</code>, each broker Pod requires an available Persistent Volume (PV) that the Operator can claim using a Persistent Volume Claim (PVC).</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: false</p>
+<p class="tableblock"><strong>Default value</strong>: true</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>initImage</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Init Container image used to configure the broker.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Default value</strong>: quay.io/artemiscloud/{initContainerImageRepo}:{latestInitContainerTag}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>journalType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify whether to use asynchronous I/O (AIO) or non-blocking I/O (NIO).</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: aio</p>
+<p class="tableblock"><strong>Default value</strong>: nio</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>messageMigration</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When a broker Pod shuts down due to a failure or intentional scaledown of the broker deployment, specify whether to migrate messages to another broker Pod that is still running in the broker cluster.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: false</p>
+<p class="tableblock"><strong>Default value</strong>: true</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>resources.limits.cpu</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum amount of host-node CPU, in millicores, that each broker container running in a Pod in a deployment can consume.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: "500m"</p>
+<p class="tableblock"><strong>Default value</strong>: Uses the same default value that your version of Kubernetes uses. Consult a cluster administrator.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>resources.limits.memory</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum amount of host-node memory, in bytes, that each broker container running in a Pod in a deployment can consume. Supports byte notation (for example, K, M, G), or the binary equivalents (Ki, Mi, Gi).</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: "1024M"</p>
+<p class="tableblock"><strong>Default value</strong>: Uses the same default value that your version of Kubernetes uses. Consult a cluster administrator.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>resources.requests.cpu</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Amount of host-node CPU, in millicores, that each broker container running in a Pod in a deployment explicitly requests.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: "250m"</p>
+<p class="tableblock"><strong>Default value</strong>: Uses the same default value that your version of Kubernetes uses. Consult a cluster administrator.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>resources.requests.memory</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Amount of host-node memory, in bytes, that each broker container running in a Pod in a deployment explicitly requests. Supports byte notation (for example, K, M, G), or the binary equivalents (Ki, Mi, Gi).</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: "512M"</p>
+<p class="tableblock"><strong>Default value</strong>: Uses the same default value that your version of Kubernetes uses. Consult a cluster administrator.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>storage.size</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Size, in bytes, of the Persistent Volume Claim (PVC) that each broker in a deployment requires for persistent storage. This property applies only when <code>persistenceEnabled</code> is set to <code>true</code>.  The value that you specify <strong>must</strong> include a unit.  Supports byte notation (for example, K, M, G), or the binary equivalents (Ki, Mi, Gi).</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: 4Gi</p>
+<p class="tableblock"><strong>Default value</strong>: 2Gi</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>jolokiaAgentEnabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies whether the Jolokia JVM Agent is enabled for the brokers in the deployment. If the value of this property is set to <code>true</code>, Fuse Console can discover and display runtime data for the brokers.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: true</p>
+<p class="tableblock"><strong>Default value</strong>: false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>managementRBACEnabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies whether role-based access control (RBAC) is enabled for the brokers in the deployment. To use Fuse Console, you <strong>must</strong> set the value to <code>false</code>, because Fuse Console uses its own role-based access control.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: false</p>
+<p class="tableblock"><strong>Default value</strong>: true</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>console</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Configuration of broker management console.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>expose</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify whether to expose the management console port for each broker in a deployment.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: true</p>
+<p class="tableblock"><strong>Default value</strong>: false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sslEnabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify whether to use SSL on the management console port.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: true</p>
+<p class="tableblock"><strong>Default value</strong>: false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sslSecret</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Secret where broker key store, trust store, and their corresponding passwords (all Base64-encoded) are stored. If you do not specify a value for <code>sslSecret</code>, the console uses a default secret name. The default secret name is in the form of <code><em>&lt;custom-resource-name&gt;</em>-console-secret</code>.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: my-broker-deployment-console-secret</p>
+<p class="tableblock"><strong>Default value</strong>: Not specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>useClientAuth</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify whether the management console requires client authorization.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: true</p>
+<p class="tableblock"><strong>Default value</strong>: false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>acceptors.acceptor</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A single acceptor configuration instance.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of acceptor.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: my-acceptor</p>
+<p class="tableblock"><strong>Default value</strong>: Not applicable</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>port</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Port number to use for the acceptor instance.</p>
+<p class="tableblock"><strong>Type</strong>: int</p>
+<p class="tableblock"><strong>Example</strong>: 5672</p>
+<p class="tableblock"><strong>Default value</strong>: 61626 for the first acceptor that you define. The default value then increments by 10 for every subsequent acceptor that you define.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>protocols</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Messaging protocols to be enabled on the acceptor instance.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: amqp,core</p>
+<p class="tableblock"><strong>Default value</strong>: all</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sslEnabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify whether SSL is enabled on the acceptor port. If set to <code>true</code>, look in the secret name specified in <code>sslSecret</code> for the credentials required by TLS/SSL.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: true</p>
+<p class="tableblock"><strong>Default value</strong>: false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sslSecret</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Secret where broker key store, trust store, and their corresponding passwords (all Base64-encoded) are stored.</p>
+<p class="tableblock">If you do not specify a custom secret name for <code>sslSecret</code>, the acceptor assumes a default secret name. The default secret name has a format of <code><em>&lt;Custom-Resource-name&gt;</em>-<em>&lt;acceptor-name&gt;</em>-secret</code>.</p>
+<p class="tableblock">You must always create this secret yourself, even when the acceptor assumes a default name.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: my-broker-deployment-my-acceptor-secret</p>
+<p class="tableblock"><strong>Default value</strong>: <em>&lt;Custom-Resource-name&gt;</em>-<em>&lt;acceptor-name&gt;</em>-secret</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>enabledCipherSuites</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comma-separated list of cipher suites to use for TLS/SSL communication.</p>
+<p class="tableblock">Specify the most secure cipher suite(s) supported by your client application. If you use a comma-separated list to specify a set of cipher suites that is common to both the broker and the client, or you do not specify any cipher suites, the broker and client mutually negotiate a cipher suite to use. If you do not know which cipher suites to specify, it is recommended that you first establish a broker-client connection with your client running in debug mode, to verify the cipher suites that are common to both the broker and the client. Then, configure <code>enabledCipherSuites</code> on the broker.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Default value</strong>: Not specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>enabledProtocols</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comma-separated list of protocols to use for TLS/SSL communication.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: TLSv1,TLSv1.1,TLSv1.2</p>
+<p class="tableblock"><strong>Default value</strong>: Not specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>needClientAuth</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify whether the broker informs clients that two-way TLS is required on the acceptor. This property overrides <code>wantClientAuth</code>.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: true</p>
+<p class="tableblock"><strong>Default value</strong>: Not specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>wantClientAuth</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify whether the broker informs clients that two-way TLS is <em>requested</em> on the acceptor, but not required. This property is overridden by <code>needClientAuth</code>.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: true</p>
+<p class="tableblock"><strong>Default value</strong>: Not specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>verifyHost</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify whether to compare the Common Name (CN) of a client&#8217;s certificate to its host name, to verify that they match. This option applies only when two-way TLS is used.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: true</p>
+<p class="tableblock"><strong>Default value</strong>: Not specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sslProvider</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify whether the SSL provider is JDK or OPENSSL.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: OPENSSL</p>
+<p class="tableblock"><strong>Default value</strong>: JDK</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sniHost</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Regular expression to match against the <code>server_name</code> extension on incoming connections. If the names don&#8217;t match, connection to the acceptor is rejected.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: some_regular_expression</p>
+<p class="tableblock"><strong>Default value</strong>: Not specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>expose</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify whether to expose the acceptor to clients outside Kubernetes.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: true</p>
+<p class="tableblock"><strong>Default value</strong>: false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>anycastPrefix</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prefix used by a client to specify that the <code>anycast</code> routing type should be used.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: jms.queue</p>
+<p class="tableblock"><strong>Default value</strong>: Not specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>multicastPrefix</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prefix used by a client to specify that the <code>multicast</code> routing type should be used.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: /topic/</p>
+<p class="tableblock"><strong>Default value</strong>: Not specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>connectionsAllowed</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of connections allowed on the acceptor. When this limit is reached, a DEBUG message is issued to the log, and the connection is refused. The type of client in use determines what happens when the connection is refused.</p>
+<p class="tableblock"><strong>Type</strong>: integer</p>
+<p class="tableblock"><strong>Example</strong>: 2</p>
+<p class="tableblock"><strong>Default value</strong>: 0 (unlimited connections)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>amqpMinLargeMessageSize</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Minimum message size, in bytes, required for the broker to handle an AMQP message as a large message. If the size of an AMQP message is equal or greater to this value, the broker stores the message in a large messages directory (<code>/opt/<em>&lt;custom-resource-name&gt;</em>/data/large-messages</code>, by default) on the persistent volume (PV) used by the broker for message storage. Setting the value to <code>-1</code> disables large message handling for AMQP messages.</p>
+<p class="tableblock"><strong>Type</strong>: integer</p>
+<p class="tableblock"><strong>Example</strong>: 204800</p>
+<p class="tableblock"><strong>Default value</strong>: 102400 (100 KB)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>connectors.connector</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A single connector configuration instance.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of connector.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: my-connector</p>
+<p class="tableblock"><strong>Default value</strong>: Not applicable</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>type</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The type of connector to create; <code>tcp</code> or <code>vm</code>.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: vm</p>
+<p class="tableblock"><strong>Default value</strong>: tcp</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>host*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Host name or IP address to connect to.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: 192.168.0.58</p>
+<p class="tableblock"><strong>Default value</strong>: Not specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>port*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Port number to be used for the connector instance.</p>
+<p class="tableblock"><strong>Type</strong>: int</p>
+<p class="tableblock"><strong>Example</strong>: 22222</p>
+<p class="tableblock"><strong>Default value</strong>: Not specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sslEnabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify whether SSL is enabled on the connector port. If set to <code>true</code>, look in the secret name specified in <code>sslSecret</code> for the credentials required by TLS/SSL.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: true</p>
+<p class="tableblock"><strong>Default value</strong>: false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sslSecret</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Secret where broker key store, trust store, and their corresponding passwords (all Base64-encoded) are stored.</p>
+<p class="tableblock">If you do not specify a custom secret name for <code>sslSecret</code>, the connector assumes a default secret name. The default secret name has a format of <code><em>&lt;Custom-Resource-name&gt;</em>-<em>&lt;connector-name&gt;</em>-secret</code>.</p>
+<p class="tableblock">You must always create this secret yourself, even when the connector assumes a default name.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: my-broker-deployment-my-connector-secret</p>
+<p class="tableblock"><strong>Default value</strong>: <em>&lt;Custom-Resource-name&gt;</em>-<em>&lt;connector-name&gt;</em>-secret</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>enabledCipherSuites</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comma-separated list of cipher suites to use for TLS/SSL communication.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>NOTE</strong>: For a connector, it is recommended that you <strong>do not</strong> specify a list of cipher suites.</p>
+<p class="tableblock"><strong>Default value</strong>: Not specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>enabledProtocols</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comma-separated list of protocols to use for TLS/SSL communication.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: TLSv1,TLSv1.1,TLSv1.2</p>
+<p class="tableblock"><strong>Default value</strong>: Not specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>needClientAuth</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify whether the broker informs clients that two-way TLS is required on the connector. This property overrides <code>wantClientAuth</code>.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: true</p>
+<p class="tableblock"><strong>Default value</strong>: Not specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>wantClientAuth</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify whether the broker informs clients that two-way TLS is <em>requested</em> on the connector, but not required. This property is overridden by <code>needClientAuth</code>.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: true</p>
+<p class="tableblock"><strong>Default value</strong>: Not specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>verifyHost</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify whether to compare the Common Name (CN) of client&#8217;s certificate to its host name, to verify that they match. This option applies only when two-way TLS is used.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: true</p>
+<p class="tableblock"><strong>Default value</strong>: Not specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sslProvider</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify whether the SSL provider is <code>JDK</code> or <code>OPENSSL</code>.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: OPENSSL</p>
+<p class="tableblock"><strong>Default value</strong>: JDK</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sniHost</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Regular expression to match against the <code>server_name</code> extension on outgoing connections. If the names don&#8217;t match, the connector connection is rejected.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: some_regular_expression</p>
+<p class="tableblock"><strong>Default value</strong>: Not specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>expose</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify whether to expose the connector to clients outside Kubernetes.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: true</p>
+<p class="tableblock"><strong>Default value</strong>: false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>addressSettings.applyRule</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Specifies how the Operator applies the configuration that you add to the CR for each matching address or set of addresses.</p>
+</div>
+<div class="paragraph">
+<p>The values that you can specify are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>merge_all</code></dt>
+<dd>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>For address settings specified in both the CR <strong>and</strong> the default configuration that match the same address or set of addresses:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Replace any property values specified in the default configuration with those specified in the CR.</p>
+</li>
+<li>
+<p>Keep any property values that are specified uniquely in the CR <strong>or</strong> the default configuration. Include each of these in the final, merged configuration.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>For address settings specified in either the CR <strong>or</strong> the default configuration that uniquely match a particular address or set of addresses, include these in the final, merged configuration.</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>merge_replace</code></dt>
+<dd>
+<div class="paragraph">
+<p>For address settings specified in both the CR <strong>and</strong> the default configuration that match the same address or set of addresses, include the settings specified in the <strong>CR</strong> in the final, merged configuration. <strong>Do not</strong> include any properties specified in the default configuration, even if these are not specified in the CR.</p>
+</div>
+<div class="paragraph">
+<p>For address settings specified in either the CR <strong>or</strong> the default configuration that uniquely match a particular address or set of addresses, include these in the final, merged configuration.</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>replace_all</code></dt>
+<dd>
+<p>Replace <strong>all</strong> address settings specified in the default configuration with those specified in the CR. The final, megred configuration corresponds exactly to that specified in the CR.</p>
+</dd>
+</dl>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Type</strong>: string</p>
+</div>
+<div class="paragraph">
+<p><strong>Example</strong>: replace_all</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value</strong>: merge_all</p>
+</div>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>addressSettings.addressSetting</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Address settings for a matching address or <em>set</em> of addresses.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>addressFullPolicy</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Specify what happens when an address configured with <code>maxSizeBytes</code> becomes full. The available policies are:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>PAGE</code></dt>
+<dd>
+<p>Messages sent to a full address are paged to disk.</p>
+</dd>
+<dt class="hdlist1"><code>DROP</code></dt>
+<dd>
+<p>Messages sent to a full address are silently dropped.</p>
+</dd>
+<dt class="hdlist1"><code>FAIL</code></dt>
+<dd>
+<p>Messages sent to a full address are dropped and the message producers receive an exception.</p>
+</dd>
+<dt class="hdlist1"><code>BLOCK</code></dt>
+<dd>
+<p>Message producers will block when they try to send any further messages.</p>
+<div class="paragraph">
+<p>The BLOCK policy works only for AMQP, OpenWire, and {CoreProtocolName}, because those protocols support flow control.</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type</strong>: string</p>
+</div>
+<div class="paragraph">
+<p><strong>Example</strong>: DROP</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value</strong>: PAGE</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>autoCreateAddresses</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify whether the broker automatically creates an address when a client sends a message to, or attempts to consume a message from, a queue that is bound to an address that does not exist.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: false</p>
+<p class="tableblock"><strong>Default value</strong>: true</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>autoCreateDeadLetterResources</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify whether the broker automatically creates a dead letter address and queue to receive undelivered messages.</p>
+<p class="tableblock">If the parameter is set to <code>true</code>, the broker automatically creates a dead letter address and an associated dead letter queue. The name of the automatically-created address matches the value that you specify for <code>deadLetterAddress</code>.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: true</p>
+<p class="tableblock"><strong>Default value</strong>: false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>autoCreateExpiryResources</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify whether the broker automatically creates an address and queue to receive expired messages.</p>
+<p class="tableblock">If the parameter is set to <code>true</code>, the broker automatically creates an expiry address and an associated expiry queue. The name of the automatically-created address matches the value that you specify for <code>expiryAddress</code>.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: true</p>
+<p class="tableblock"><strong>Default value</strong>: false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>autoCreateJmsQueues</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This property is deprecated. Use <code>autoCreateQueues</code> instead.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>autoCreateJmsTopics</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This property is deprecated. Use <code>autoCreateQueues</code> instead.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>autoCreateQueues</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify whether the broker automatically creates a queue when a client sends a message to, or attempts to consume a message from, a queue that does not yet exist.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: false</p>
+<p class="tableblock"><strong>Default value</strong>: true</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>autoDeleteAddresses</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify whether the broker automatically deletes automatically-created addresses when the broker no longer has any queues.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: false</p>
+<p class="tableblock"><strong>Default value</strong>: true</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>autoDeleteAddressDelay</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time, in milliseconds, that the broker waits before automatically deleting an automatically-created address when the address has no queues.</p>
+<p class="tableblock"><strong>Type</strong>: integer</p>
+<p class="tableblock"><strong>Example</strong>: 100</p>
+<p class="tableblock"><strong>Default value</strong>: 0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>autoDeleteJmsQueues</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This property is deprecated. Use <code>autoDeleteQueues</code> instead.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>autoDeleteJmsTopics</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This property is deprecated. Use <code>autoDeleteQueues</code> instead.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>autoDeleteQueues</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify whether the broker automatically deletes an automatically-created queue when the queue has no consumers and no messages.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: false</p>
+<p class="tableblock"><strong>Default value</strong>: true</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>autoDeleteCreatedQueues</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify whether the broker automatically deletes a manually-created queue when the queue has no consumers and no messages.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: true</p>
+<p class="tableblock"><strong>Default value</strong>: false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>autoDeleteQueuesDelay</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time, in milliseconds, that the broker waits before automatically deleting an automatically-created queue when the queue has no consumers.</p>
+<p class="tableblock"><strong>Type</strong>: integer</p>
+<p class="tableblock"><strong>Example</strong>: 10</p>
+<p class="tableblock"><strong>Default value</strong>: 0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>autoDeleteQueuesMessageCount</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum number of messages that can be in a queue before the broker evaluates whether the queue can be automatically deleted.</p>
+<p class="tableblock"><strong>Type</strong>: integer</p>
+<p class="tableblock"><strong>Example</strong>: 5</p>
+<p class="tableblock"><strong>Default value</strong>: 0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>configDeleteAddresses</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>When the configuration file is reloaded, this parameter specifies how to handle an address (and its queues) that has been deleted from the configuration file. You can specify the following values:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>OFF</code></dt>
+<dd>
+<p>The broker does not delete the address when the configuration file is reloaded.</p>
+</dd>
+<dt class="hdlist1"><code>FORCE</code></dt>
+<dd>
+<p>The broker deletes the address and its queues when the configuration file is reloaded. If there are any messages in the queues, they are removed also.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type</strong>: string</p>
+</div>
+<div class="paragraph">
+<p><strong>Example</strong>: FORCE</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value</strong>: OFF</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>configDeleteQueues</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>When the configuration file is reloaded, this setting specifies how the broker handles queues that have been deleted from the configuration file. You can specify the following values:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>OFF</code></dt>
+<dd>
+<p>The broker does not delete the queue when the configuration file is reloaded.</p>
+</dd>
+<dt class="hdlist1"><code>FORCE</code></dt>
+<dd>
+<p>The broker deletes the queue when the configuration file is reloaded. If there are any messages in the queue, they are removed also.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><strong>Type</strong>: string</p>
+</div>
+<div class="paragraph">
+<p><strong>Example</strong>: FORCE</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value</strong>: OFF</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deadLetterAddress</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The address to which the broker sends dead (that is, <em>undelivered</em>) messages.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: DLA</p>
+<p class="tableblock"><strong>Default value</strong>: None</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deadLetterQueuePrefix</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prefix that the broker applies to the name of an automatically-created dead letter queue.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: myDLQ.</p>
+<p class="tableblock"><strong>Default value</strong>: DLQ.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deadLetterQueueSuffix</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Suffix that the broker applies to an automatically-created dead letter queue.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: .DLQ</p>
+<p class="tableblock"><strong>Default value</strong>: None</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>defaultAddressRoutingType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Routing type used on automatically-created addresses.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: ANYCAST</p>
+<p class="tableblock"><strong>Default value</strong>: MULTICAST</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>defaultConsumersBeforeDispatch</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of consumers needed before message dispatch can begin for queues on an address.</p>
+<p class="tableblock"><strong>Type</strong>: integer</p>
+<p class="tableblock"><strong>Example</strong>: 5</p>
+<p class="tableblock"><strong>Default value</strong>: 0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>defaultConsumerWindowSize</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default window size, in bytes, for a consumer.</p>
+<p class="tableblock"><strong>Type</strong>: integer</p>
+<p class="tableblock"><strong>Example</strong>: 300000</p>
+<p class="tableblock"><strong>Default value</strong>: 1048576 (1024*1024)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>defaultDelayBeforeDispatch</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default time, in milliseconds, that the broker waits before dispatching messages if the value specified for <code>defaultConsumersBeforeDispatch</code> has not been reached.</p>
+<p class="tableblock"><strong>Type</strong>: integer</p>
+<p class="tableblock"><strong>Example</strong>: 5</p>
+<p class="tableblock"><strong>Default value</strong>: -1 (no delay)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>defaultExclusiveQueue</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies whether all queues on an address are exclusive queues by default.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: true</p>
+<p class="tableblock"><strong>Default value</strong>: false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>defaultGroupBuckets</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of buckets to use for message grouping.</p>
+<p class="tableblock"><strong>Type</strong>: integer</p>
+<p class="tableblock"><strong>Example</strong>: 0 (message grouping disabled)</p>
+<p class="tableblock"><strong>Default value</strong>: -1 (no limit)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>defaultGroupFirstKey</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Key used to indicate to a consumer which message in a group is first.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: firstMessageKey</p>
+<p class="tableblock"><strong>Default value</strong>: None</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>defaultGroupRebalance</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies whether to rebalance groups when a new consumer connects to the broker.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: true</p>
+<p class="tableblock"><strong>Default value</strong>: false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>defaultGroupRebalancePauseDispatch</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies whether to pause message dispatch while the broker is rebalancing groups.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: true</p>
+<p class="tableblock"><strong>Default value</strong>: false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>defaultLastValueQueue</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies whether all queues on an address are last value queues by default.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: true</p>
+<p class="tableblock"><strong>Default value</strong>: false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>defaultLastValueKey</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default key to use for a last value queue.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: stock_ticker</p>
+<p class="tableblock"><strong>Default value</strong>: None</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>defaultMaxConsumers</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum number of consumers allowed on a queue at any time.</p>
+<p class="tableblock"><strong>Type</strong>: integer</p>
+<p class="tableblock"><strong>Example</strong>: 100</p>
+<p class="tableblock"><strong>Default value</strong>: -1 (no limit)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>defaultNonDestructive</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies whether all queues on an address are non-destructive by default.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: true</p>
+<p class="tableblock"><strong>Default value</strong>: false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>defaultPurgeOnNoConsumers</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies whether the broker purges the contents of a queue once there are no consumers.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: true</p>
+<p class="tableblock"><strong>Default value</strong>: false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>defaultQueueRoutingType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Routing type used on automatically-created queues. The default value is <code>MULTICAST</code>.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: ANYCAST</p>
+<p class="tableblock"><strong>Default value</strong>: MULTICAST</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>defaultRingSize</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default ring size for a matching queue that does not have a ring size explicitly set.</p>
+<p class="tableblock"><strong>Type</strong>: integer</p>
+<p class="tableblock"><strong>Example</strong>: 3</p>
+<p class="tableblock"><strong>Default value</strong>: -1 (no size limit)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>enableMetrics</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies whether a configured metrics plugin such as the Prometheus plugin collects metrics for a matching address or set of addresses.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: false</p>
+<p class="tableblock"><strong>Default value</strong>: true</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>expiryAddress</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Address that receives expired messages.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: myExpiryAddress</p>
+<p class="tableblock"><strong>Default value</strong>: None</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>expiryDelay</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Expiration time, in milliseconds, applied to messages that are using the default expiration time.</p>
+<p class="tableblock"><strong>Type</strong>: integer</p>
+<p class="tableblock"><strong>Example</strong>: 100</p>
+<p class="tableblock"><strong>Default value</strong>: -1 (no expiration time applied)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>expiryQueuePrefix</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prefix that the broker applies to the name of an automatically-created expiry queue.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: myExp.</p>
+<p class="tableblock"><strong>Default value</strong>: EXP.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>expiryQueueSuffix</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Suffix that the broker applies to the name of an automatically-created expiry queue.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: .EXP</p>
+<p class="tableblock"><strong>Default value</strong>: None</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>lastValueQueue</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify whether a queue uses only last values or not.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: true</p>
+<p class="tableblock"><strong>Default value</strong>: false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>managementBrowsePageSize</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify how many messages a management resource can browse.</p>
+<p class="tableblock"><strong>Type</strong>: integer</p>
+<p class="tableblock"><strong>Example</strong>: 100</p>
+<p class="tableblock"><strong>Default value</strong>: 200</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>match</code>*</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>String that matches address settings to addresses configured on the broker. You can specify an exact address name or use a wildcard expression to match the address settings to a <em>set</em> of addresses.</p>
+</div>
+<div class="paragraph">
+<p>If you use a wildcard expression as a value for the <code>match</code> property, you must enclose the value in single quotation marks, for example, <code>'myAddresses*'</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Type</strong>: string</p>
+</div>
+<div class="paragraph">
+<p><strong>Example</strong>: 'myAddresses*'</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value</strong>: None</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>maxDeliveryAttempts</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies how many times the broker attempts to deliver a message before sending the message to the configured dead letter address.</p>
+<p class="tableblock"><strong>Type</strong>: integer</p>
+<p class="tableblock"><strong>Example</strong>: 20</p>
+<p class="tableblock"><strong>Default value</strong>: 10</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>maxExpiryDelay</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Expiration time, in milliseconds, applied to messages that are using an expiration time greater than this value.</p>
+<p class="tableblock"><strong>Type</strong>: integer</p>
+<p class="tableblock"><strong>Example</strong>: 20</p>
+<p class="tableblock"><strong>Default value</strong>: -1 (no maximum expiration time applied)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>maxRedeliveryDelay</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum value, in milliseconds, between message redelivery attempts made by the broker.</p>
+<p class="tableblock"><strong>Type</strong>: integer</p>
+<p class="tableblock"><strong>Example</strong>: 100</p>
+<p class="tableblock"><strong>Default value</strong>: The default value is ten times the value of <code>redeliveryDelay</code>, which has a default value of <code>0</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>maxSizeBytes</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum memory size, in bytes, for an address. Used when <code>addressFullPolicy</code> is set to <code>PAGING</code>, <code>BLOCK</code>, or <code>FAIL</code>. Also supports byte notation such as "K", "Mb", and "GB".</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: 10Mb</p>
+<p class="tableblock"><strong>Default value</strong>: -1 (no limit)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>maxSizeBytesRejectThreshold</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum size, in bytes, that an address can reach before the broker begins to reject messages. Used when the <code>address-full-policy</code> is set to <code>BLOCK</code>. Works in combination with <code>maxSizeBytes</code> for the AMQP protocol only.</p>
+<p class="tableblock"><strong>Type</strong>: integer</p>
+<p class="tableblock"><strong>Example</strong>: 500</p>
+<p class="tableblock"><strong>Default value</strong>: -1 (no maximum size)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>messageCounterHistoryDayLimit</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of days for which a broker keeps a message counter history for an address.</p>
+<p class="tableblock"><strong>Type</strong>: integer</p>
+<p class="tableblock"><strong>Example</strong>: 5</p>
+<p class="tableblock"><strong>Default value</strong>: 0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>minExpiryDelay</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Expiration time, in milliseconds, applied to messages that are using an expiration time lower than this value.</p>
+<p class="tableblock"><strong>Type</strong>: integer</p>
+<p class="tableblock"><strong>Example</strong>: 20</p>
+<p class="tableblock"><strong>Default value</strong>: -1 (no minimum expiration time applied)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pageMaxCacheSize</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of page files to keep in memory to optimize I/O during paging navigation.</p>
+<p class="tableblock"><strong>Type</strong>: integer</p>
+<p class="tableblock"><strong>Example</strong>: 10</p>
+<p class="tableblock"><strong>Default value</strong>: 5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pageSizeBytes</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Paging size in bytes. Also supports byte notation such as <code>K</code>, <code>Mb</code>, and <code>GB</code>.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: 20971520</p>
+<p class="tableblock"><strong>Default value</strong>: 10485760 (approximately 10.5 MB)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>redeliveryDelay</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time, in milliseconds, that the broker waits before redelivering a cancelled message.</p>
+<p class="tableblock"><strong>Type</strong>: integer</p>
+<p class="tableblock"><strong>Example</strong>: 100</p>
+<p class="tableblock"><strong>Default value</strong>: 0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>redeliveryDelayMultiplier</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Multiplying factor to apply to the value of <code>redeliveryDelay</code>.</p>
+<p class="tableblock"><strong>Type</strong>: number</p>
+<p class="tableblock"><strong>Example</strong>: 5</p>
+<p class="tableblock"><strong>Default value</strong>: 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>redeliveryCollisionAvoidanceFactor</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Multiplying factor to apply to the value of <code>redeliveryDelay</code> to avoid collisions.</p>
+<p class="tableblock"><strong>Type</strong>: number</p>
+<p class="tableblock"><strong>Example</strong>: 1.1</p>
+<p class="tableblock"><strong>Default value</strong>: 0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>redistributionDelay</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time, in milliseconds, that the broker waits after the last consumer is closed on a queue before redistributing any remaining messages.</p>
+<p class="tableblock"><strong>Type</strong>: integer</p>
+<p class="tableblock"><strong>Example</strong>: 100</p>
+<p class="tableblock"><strong>Default value</strong>: -1 (not set)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>retroactiveMessageCount</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of messages to keep for future queues created on an address.</p>
+<p class="tableblock"><strong>Type</strong>: integer</p>
+<p class="tableblock"><strong>Example</strong>: 100</p>
+<p class="tableblock"><strong>Default value</strong>: 0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sendToDlaOnNoRoute</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify whether a message will be sent to the configured dead letter address if it cannot be routed to any queues.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: true</p>
+<p class="tableblock"><strong>Default value</strong>: false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>slowConsumerCheckPeriod</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">How often, in <strong>seconds</strong>, that the broker checks for slow consumers.</p>
+<p class="tableblock"><strong>Type</strong>: integer</p>
+<p class="tableblock"><strong>Example</strong>: 15</p>
+<p class="tableblock"><strong>Default value</strong>: 5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>slowConsumerPolicy</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies what happens when a slow consumer is identified. Valid options are <code>KILL</code> or <code>NOTIFY</code>. <code>KILL</code> kills the consumer&#8217;s connection, which impacts any client threads using that same connection. <code>NOTIFY</code> sends a <code>CONSUMER_SLOW</code> management notification to the client.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: KILL</p>
+<p class="tableblock"><strong>Default value</strong>: NOTIFY</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>slowConsumerThreshold</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Minimum rate of message consumption, in messages per second, before a consumer is considered slow.</p>
+<p class="tableblock"><strong>Type</strong>: integer</p>
+<p class="tableblock"><strong>Example</strong>: 100</p>
+<p class="tableblock"><strong>Default value</strong>: -1 (not set)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>upgrades</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">When you update the value of <code>version</code> to specify a new target version of ActiveMQ Artemis, specify whether to allow the Operator to automatically update the <code>deploymentPlan.image</code> value to a broker container image that corresponds to that version of ActiveMQ Artemis.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: true</p>
+<p class="tableblock"><strong>Default value</strong>: false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>minor</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify whether to allow the Operator to automatically update the <code>deploymentPlan.image</code> value when you update the value of <code>version</code> from one <em>minor</em> version of ActiveMQ Artemis to another, for example, from <code>7.6.0</code> to <code></code>.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: true</p>
+<p class="tableblock"><strong>Default value</strong>: false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>version</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify a target <em>minor</em> version of ActiveMQ Artemis for which you want the Operator to automatically update the CR to use a corresponding broker container image. For example, if you change the value of <code>version</code> from <code>7.6.0</code> to <code>7.7.0</code> (and <code>upgrades.enabled</code> and <code>upgrades.minor</code> are both set to <code>true</code>), then the Operator updates <code>deploymentPlan.image</code> to a broker image of the form <code>registry.redhat.io/amq7/amq-broker:7.7-x</code>.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: 7.7.0</p>
+<p class="tableblock"><strong>Default value</strong>: Current version of ActiveMQ Artemis</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="addressing-crd_"><a class="anchor" href="#addressing-crd_"></a>Address Custom Resource configuration reference</h3>
+<div class="paragraph">
+<p>A CR instance based on the address CRD enables you to define addresses and queues for the brokers in your deployment. The following table details the items that you can configure.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Configuration items marked with an asterisk (<strong>*</strong>) are required in any corresponding Custom Resource (CR) that you deploy. If you do not explicitly specify a value for a non-required item, the configuration uses the default value.
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Entry</th>
+<th class="tableblock halign-left valign-top">Description and usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>addressName*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Address name to be created on broker.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: address0</p>
+<p class="tableblock"><strong>Default value</strong>: Not specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>queueName*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Queue name to be created on broker.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: queue0</p>
+<p class="tableblock"><strong>Default value</strong>: Not specified</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>removeFromBrokerOnDelete*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify whether the Operator removes existing addresses for all brokers in a deployment when you remove the address CR instance for that deployment. The default value is <code>false</code>, which means the Operator does not delete existing addresses when you remove the CR.</p>
+<p class="tableblock"><strong>Type</strong>: Boolean</p>
+<p class="tableblock"><strong>Example</strong>: true</p>
+<p class="tableblock"><strong>Default value</strong>: false</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>routingType*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Routing type to be used; <code>anycast</code> or <code>multicast</code>.</p>
+<p class="tableblock"><strong>Type</strong>: string</p>
+<p class="tableblock"><strong>Example</strong>: anycast</p>
+<p class="tableblock"><strong>Default value</strong>: Not specified</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="bg-light section pb-0">
+  <div class="container">
+    <div class="row">
+        <div class="col-md-3 col-sm-6 mb-10">
+
+
+            <ul class="list-inline social-icons">
+
+                <li class="list-inline-item"><a href="https://twitter.com/artemiscloudio"><i class="ti-twitter-alt"></i></a></li><li class="list-inline-item">twitter</li>
+
+                <li class="list-inline-item"><a href="https://github.com/ArtemisCloud"><i class="ti-github"></i></a></li><li class="list-inline-item">github</li>
+
+            </ul>
+
+        </div>
+    </div>
+
+  </div>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
