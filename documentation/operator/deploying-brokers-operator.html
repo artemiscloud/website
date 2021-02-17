@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Creating Operator-based broker deployments :: Documentation</title>
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="/website/css/site.css">
+  <link rel="stylesheet" href="https://artemiscloud.github.io/website/plugins/bootstrap/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://artemiscloud.github.io/website/plugins/themify-icons/themify-icons.css">
+
+  <link rel="stylesheet" href="https://artemiscloud.github.io/website/plugins/slick/slick.css">
+
+
+  <!-- Main Stylesheet -->
+
+  <link href="https://artemiscloud.github.io/website/scss/style.min.css" rel="stylesheet" media="screen"/>
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="https://artemiscloud.github.io/website/images/favicon.png" type="image/x-icon">
+  <link rel="icon" href="https://artemiscloud.github.io/website/images/favicon.png" type="image/x-icon">
+
+      <!-- mobile responsive meta -->
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+      <meta name="description" content="A Page listing the latest releases">
+      <meta name="author" content="Themefisher">
+      <meta name="generator" content="Hugo 0.75.1" />
+
+      <meta property="og:title" content="Releases" />
+      <meta property="og:description" content="A Page listing the latest releases" />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://artemiscloud.github.io/website/releases/" />
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body>
+<header class="navigation">
+  <div class="container">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+      <a class="navbar-brand" href="https://artemiscloud.github.io/website/">
+
+        <img width="250px" class="img-fluid" src="https://artemiscloud.github.io/website/images/logo.png" alt="Artemis Cloud">
+
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation">
+        <i class="ti-menu h3"></i>
+      </button>
+
+      <div class="collapse navbar-collapse text-center" id="navigation">
+        <ul class="navbar-nav mx-auto">
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://artemiscloud.github.io/website/blog">Blog</a>
+          </li>
+
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://artemiscloud.github.io/website/docs">Documentation</a>
+          </li>
+
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://artemiscloud.github.io/website/releases">Releases</a>
+          </li>
+
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://artemiscloud.github.io/website/community">Community</a>
+          </li>
+
+
+        </ul>
+
+
+      </div>
+    </nav>
+  </div>
+</header>
+<div class="body">
+<div class="nav-container" data-component="artemiscloud-docs" data-version="dev">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul>
+  <li class="nav-item" data-depth="0">
+    <span class="nav-text">Introduction</span>
+<ul>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Welcome</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <span class="nav-text">The Broker Operator</span>
+<ul>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="installing-operator-cli.html">Installing The Operator</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="deploying-brokers-operator.html">Creating Broker Deployments</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <span class="nav-text">Reference</span>
+<ul>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="reference.html">Custom Resource configuration reference</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+    </div>
+  </aside>
+</div>
+<main>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Creating Operator-based broker deployments</h1>
+<div class="sect1">
+<h2 id="proc_br-deploying-basic-broker-operator_"><a class="anchor" href="#proc_br-deploying-basic-broker-operator_"></a>Deploying a basic broker instance</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following procedure shows how to use a Custom Resource (CR) instance to create a basic broker deployment.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>You cannot create more than one broker deployment in a given Kubernetes  project by deploying multiple Custom Resource (CR) instances. However, when you have created a broker deployment in a project, you <strong>can</strong> deploy multiple CR instances for addresses.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>You must have already installed the ArtemisCloud Operator.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>To use the Kubernetes  command-line interface (CLI) to install the ActiveMQ Artemis Operator, see <a href="installing-operator-cli.html#installing-broker-operator-cli_" class="page">Installing the Operator</a>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<div class="title">Procedure</div>
+<p>When you have successfully installed the Operator, the Operator is running and listening for changes related to your CRs. This example procedure shows how to use a CR instance to deploy a basic broker in your project.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Start configuring a Custom Resource (CR) instance for the broker deployment.</p>
+<div class="openblock">
+<div class="content">
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Using the Kubernetes  command-line interface:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Swith to the namespace you are using for your project</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-asciidoc hljs" data-lang="asciidoc">$ kubectl config set-context $(kubectl config current-context) --namespace= <em>&lt;project-name&gt;</em></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Open the sample CR file called <code>broker_activemqartemis_cr.yaml</code> that is included in the <code>deploy/crs</code> directory of the Operator installation archive that you downloaded and extracted.
+For a basic broker deployment, the configuration might resemble that shown below. This configuration is the default content of the <code>broker_activemqartemis_cr.yaml</code> sample CR.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">apiVersion: broker.amq.io/v2alpha4
+kind: ActiveMQArtemis
+metadata:
+  name: ex-aao
+  application: ex-aao-app
+spec:
+    version: 7.7.0
+    deploymentPlan:
+        size: 2
+        image: quay.io/artemiscloud/activemq-artemis-broker-kubernetes:
+        ...</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Observe that the sample CR uses a naming convention of <code>ex-aao</code>. This naming convention denotes that the CR is an <strong>example</strong> resource for the ArtemisCloud (based on the <strong>ActiveMQ Artemis</strong> project) <strong>Operator</strong>. When you deploy this sample CR, the resulting Stateful Set uses the name <code>ex-aao-ss</code>. Furthermore, broker Pods in the deployment are directly based on the Stateful Set name, for example, <code>ex-aao-ss-0</code>, <code>ex-aao-ss-1</code>, and so on. The application name in the CR appears in the deployment as a label on the Stateful Set. You might use this label in a Pod selector, for example.</p>
+</div>
+</li>
+<li>
+<p>The <code>size</code> value specifies the number of brokers to deploy. The default value of <code>2</code> specifies a clustered broker deployment of two brokers. However, to deploy a single broker instance, change the value to <code>1</code>.</p>
+</li>
+<li>
+<p>The <code>image</code> value specifies the container image to use to launch the broker. Ensure that this value specifies the latest version of the ActiveMQ Artemis  broker container image in the Red Hat Ecosystem Catalog, as shown below.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">image: quay.io/artemiscloud/activemq-artemis-broker-kubernetes:0.2.1</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In the preceding step, the <code>image</code> attribute specifies a <em>floating</em> image tag (that is, <code></code>) rather than a full image tag (for example, <code>-5</code>). When you specify this floating tag, your deployment uses the latest image available in the  image stream. In addition, when you specify a floating tag such as this, if the <code>imagePullPolicy</code> attribute in your Stateful Set is set to <code>Always</code>, your deployment automatically pulls and uses new <em>micro</em> image versions (for example, <code>-6</code>, <code>-7</code>, and so on) when they become available from quay.io.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Deploy the CR instance.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Save the CR file.</p>
+</li>
+<li>
+<p>Switch to the namespace in which you are creating the broker deployment.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-asciidoc hljs" data-lang="asciidoc">$ kubectl config set-context $(kubectl config current-context) --namespace= <em>&lt;project-name&gt;</em></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create the CR.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-asciidoc hljs" data-lang="asciidoc">$ kubectl create -f <em>&lt;path/to/custom-resource-instance&gt;</em>.yaml</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>In the Kubernetes web console you will see a new Stateful Set called <code>ex-aao-ss</code>.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Click the <strong>ex-aao-ss</strong> Stateful Set. You see that there is one Pod, corresponding to the single broker that you defined in the CR.</p>
+</li>
+<li>
+<p>Within the Stateful Set, click the pod link and you should see the status of th epod as running. Click on the logs link in the top right corner to see the broker&#8217;s output.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>To test that the broker is running normally, access a shell on the broker Pod to send some test messages.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Using the Kubernetes web console:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Click Pods on the left menu</p>
+</li>
+<li>
+<p>Click the <strong>ex-aao-ss</strong> Pod.</p>
+</li>
+<li>
+<p>In the top righthand corner, click the link to exec into pod</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Using the Kubernetes  command-line interface:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Get the Pod names and internal IP addresses for your project.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-asciidoc hljs" data-lang="asciidoc">$ kubectl get pods -o wide
+
+NAME                          STATUS   IP
+amq-broker-operator-54d996c   Running  10.129.2.14
+ex-aao-ss-0                   Running  10.129.2.15</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Access the shell for the broker Pod.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-asciidoc hljs" data-lang="asciidoc">$ kubectl exec --stdin --tty ex-aao-ss-0 -- /bin/bash</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>From the shell, use the <code>artemis</code> command to send some test messages. Specify the internal IP address of the broker Pod in the URL. For example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-asciidoc hljs" data-lang="asciidoc">sh-4.2$ ./amq-broker/bin/artemis producer --url tcp://10.129.2.15:61616 --destination queue://demoQueue</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The preceding command automatically creates a queue called <code>demoQueue</code> on the broker and sends a default quantity of 1000 messages to the queue.</p>
+</div>
+<div class="paragraph">
+<p>You should see output that resembles the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-asciidoc hljs" data-lang="asciidoc">Connection brokerURL = tcp://10.129.2.15:61616
+Producer ActiveMQQueue[demoQueue], thread=0 Started to calculate elapsed time ...
+
+Producer ActiveMQQueue[demoQueue], thread=0 Produced: 1000 messages
+Producer ActiveMQQueue[demoQueue], thread=0 Elapsed time in second : 3 s
+Producer ActiveMQQueue[demoQueue], thread=0 Elapsed time in milli second : 3492 milli seconds</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="ulist">
+<div class="title">Additional resources</div>
+<ul>
+<li>
+<p>For a complete configuration reference for the main broker Custom Resource (CR), see <a href="reference.html#ref_br-custom-resource-definition-config-reference_" class="page">Broker Custom Resource configuration reference</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="proc_br-deploying-clustered-brokers_"><a class="anchor" href="#proc_br-deploying-clustered-brokers_"></a>Deploying clustered brokers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If there are two or more broker Pods running in your project, the Pods automatically form a broker cluster. A clustered configuration enables brokers to connect to each other and redistribute messages as needed, for load balancing.</p>
+</div>
+<div class="paragraph">
+<p>The following procedure shows you how to deploy clustered brokers. By default, the brokers in this deployment use <em>on demand</em> load balancing, meaning that brokers will forward messages only to other brokers that have matching consumers.</p>
+</div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>A basic broker instance is already deployed. See <a href="#proc_br-deploying-basic-broker-operator_">Deploying a basic broker instance</a>.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Open the CR file that you used for your basic broker deployment.</p>
+</li>
+<li>
+<p>For a clustered deployment, ensure that the value of <code>deploymentPlan.size</code> is <code>2</code> or greater. For example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">apiVersion: broker.amq.io/v2alpha4
+kind: ActiveMQArtemis
+metadata:
+  name: ex-aao
+  application: ex-aao-app
+spec:
+    version: 7.7.0
+    deploymentPlan:
+        size: 4
+        image: quay.io/artemiscloud/activemq-artemis-broker-kubernetes:
+        ...</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Save the modified CR file.</p>
+</li>
+<li>
+<p>Switch to projects namespace:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-bash hljs" data-lang="bash">$ kubectl config set-context $(kubectl config current-context) --namespace= <em>&lt;project-name&gt;</em></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>At the command line, apply the change:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-bash hljs" data-lang="bash">$ kubectl apply -f <em>&lt;path/to/custom-resource-instance&gt;</em>.yaml</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the Kubernetes web console, additional broker Pods starts in your project, according to the number specified in your CR. By default, the brokers running in the project are clustered.</p>
+</div>
+</li>
+<li>
+<p>Open the <strong>Logs</strong> tab of each Pod. The logs show that Kubernetes  has established a cluster connection bridge on each broker. Specifically, the log output includes a line like the following:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-asciidoc hljs" data-lang="asciidoc">targetConnector=ServerLocatorImpl (identity=(Cluster-connection-bridge::ClusterConnectionBridge@6f13fb88</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="con_br-applying-custom-resource-changes-running-brokers_"><a class="anchor" href="#con_br-applying-custom-resource-changes-running-brokers_"></a>Applying Custom Resource changes to running broker deployments</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following are some important things to note about applying Custom Resource (CR) changes to running broker deployments:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You cannot dynamically update the <code>persistenceEnabled</code> attribute in your CR. To change this attribute, scale your cluster down to zero brokers. Delete the existing CR. Then, recreate and redeploy the CR with your changes, also specifying a deployment size.</p>
+</li>
+<li>
+<p>The value of the <code>deploymentPlan.size</code> attribute in your CR overrides any change you make to size of your broker deployment via the <code>kubectl scale</code> command. For example, suppose you use <code>kubectl scale</code> to change the size of a deployment from three brokers to two, but the value of <code>deploymentPlan.size</code> in your CR is still <code>3</code>. In this case, Kubernetes  initially scales the deployment down to two brokers. However, when the scaledown operation is complete, the Operator restores the deployment to three brokers, as specified in the CR.</p>
+</li>
+<li>
+<p>As described in <a href="#">Deploying the Operator using the CLI</a>, if you create a broker deployment with persistent storage (that is, by setting <code>persistenceEnabled=true</code> in your CR), you might need to provision Persistent Volumes (PVs) for the ArtemisCloud Operator to claim for your broker Pods. If you scale down the size of your broker deployment, the Operator releases any PVs that it previously claimed for the broker Pods that are now shut down. However, if you <em>remove</em> your broker deployment by deleting your CR, ArtemisCloud Operator <strong>does not</strong> release Persistent Volume Claims (PVCs) for any broker Pods that are still in the deployment when you remove it. In addition, these unreleased PVs are unavailable to any new deployment. In this case, you need to manually release the volumes. For more information, see <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/">Releasing volumes</a> in the Kubernetes  documentation.</p>
+</li>
+<li>
+<p>During an active scaling event, any further changes that you apply are queued by the Operator and executed only when scaling is complete. For example, suppose that you scale the size of your deployment down from four brokers to one. Then, while scaledown is taking place, you also change the values of the broker administrator user name and password. In this case, the Operator queues the user name and password changes until the deployment is running with one active broker.</p>
+</li>
+<li>
+<p>All CR changes – apart from changing the size of your deployment, or changing the value of the <code>expose</code> attribute for acceptors, connectors, or the console – cause existing brokers to be restarted. If you have multiple brokers in your deployment, only one broker restarts at a time.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="bg-light section pb-0">
+  <div class="container">
+    <div class="row">
+        <div class="col-md-3 col-sm-6 mb-10">
+
+
+            <ul class="list-inline social-icons">
+
+                <li class="list-inline-item"><a href="https://twitter.com/artemiscloudio"><i class="ti-twitter-alt"></i></a></li><li class="list-inline-item">twitter</li>
+
+                <li class="list-inline-item"><a href="https://github.com/ArtemisCloud"><i class="ti-github"></i></a></li><li class="list-inline-item">github</li>
+
+            </ul>
+
+        </div>
+    </div>
+
+  </div>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

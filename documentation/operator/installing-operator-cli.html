@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Installing the Operator using the CLI :: Documentation</title>
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="/website/css/site.css">
+  <link rel="stylesheet" href="https://artemiscloud.github.io/website/plugins/bootstrap/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://artemiscloud.github.io/website/plugins/themify-icons/themify-icons.css">
+
+  <link rel="stylesheet" href="https://artemiscloud.github.io/website/plugins/slick/slick.css">
+
+
+  <!-- Main Stylesheet -->
+
+  <link href="https://artemiscloud.github.io/website/scss/style.min.css" rel="stylesheet" media="screen"/>
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href="https://artemiscloud.github.io/website/images/favicon.png" type="image/x-icon">
+  <link rel="icon" href="https://artemiscloud.github.io/website/images/favicon.png" type="image/x-icon">
+
+      <!-- mobile responsive meta -->
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+      <meta name="description" content="A Page listing the latest releases">
+      <meta name="author" content="Themefisher">
+      <meta name="generator" content="Hugo 0.75.1" />
+
+      <meta property="og:title" content="Releases" />
+      <meta property="og:description" content="A Page listing the latest releases" />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://artemiscloud.github.io/website/releases/" />
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body>
+<header class="navigation">
+  <div class="container">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+      <a class="navbar-brand" href="https://artemiscloud.github.io/website/">
+
+        <img width="250px" class="img-fluid" src="https://artemiscloud.github.io/website/images/logo.png" alt="Artemis Cloud">
+
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation">
+        <i class="ti-menu h3"></i>
+      </button>
+
+      <div class="collapse navbar-collapse text-center" id="navigation">
+        <ul class="navbar-nav mx-auto">
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://artemiscloud.github.io/website/blog">Blog</a>
+          </li>
+
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://artemiscloud.github.io/website/docs">Documentation</a>
+          </li>
+
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://artemiscloud.github.io/website/releases">Releases</a>
+          </li>
+
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://artemiscloud.github.io/website/community">Community</a>
+          </li>
+
+
+        </ul>
+
+
+      </div>
+    </nav>
+  </div>
+</header>
+<div class="body">
+<div class="nav-container" data-component="artemiscloud-docs" data-version="dev">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+<ul>
+  <li class="nav-item" data-depth="0">
+    <span class="nav-text">Introduction</span>
+<ul>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Welcome</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <span class="nav-text">The Broker Operator</span>
+<ul>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="overview.html">Overview</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="installing-operator-cli.html">Installing The Operator</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="deploying-brokers-operator.html">Creating Broker Deployments</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <span class="nav-text">Reference</span>
+<ul>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="reference.html">Custom Resource configuration reference</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+    </div>
+  </aside>
+</div>
+<main>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Installing the Operator using the CLI</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The procedures in this section show how to use the Kubernetes command-line interface (CLI) to install and deploy the latest version of the Operator for ArtemisCloud  in a given Kubernetes project. In subsequent procedures, you use this Operator to deploy some broker instances.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="proc_br-getting-operator-code_"><a class="anchor" href="#proc_br-getting-operator-code_"></a>Getting the Operator code</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This procedure shows how to access and prepare the code you need to install the latest version of the Operator for ArtemisCloud .</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Download the latest version of the Operator from <a href="https://github.com/artemiscloud/activemq-artemis-operator/archive/v0.18.1.zip" class="bare">https://github.com/artemiscloud/activemq-artemis-operator/archive/v0.18.1.zip</a></p>
+</li>
+<li>
+<p>When the download has completed, move the archive to your chosen installation directory. The following example moves the archive to a directory called <code>~/broker/operator</code>.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-bash hljs" data-lang="bash">$ mkdir ~/broker/operator
+$ mv activemq-artemis-operator-0.18.1.zip ~/broker/operator</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>In your chosen installation directory, extract the contents of the archive. For example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-bash hljs" data-lang="bash">$ cd ~/broker/operator
+$ unzip activemq-artemis-operator-0.18.1.zip</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Switch to the directory that was created when you extracted the archive. For example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-bash hljs" data-lang="bash">$ cd activemq-artemis-operator</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Specify the project in which you want to install the Operator. You can create a new project or switch to an existing one.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Create a new namespace:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-bash hljs" data-lang="bash">$ kubectl create namespace  <em>&lt;project-name&gt;</em></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Or, switch to an existing namespace:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-bash hljs" data-lang="bash">$ kubectl config set-context $(kubectl config current-context) --namespace= <em>&lt;project-name&gt;</em></code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Specify a service account to use with the Operator.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>In the <code>deploy</code> directory of the Operator archive that you extracted, open the <code>service_account.yaml</code> file.</p>
+</li>
+<li>
+<p>Ensure that the <code>kind</code> element is set to <code>ServiceAccount</code>.</p>
+</li>
+<li>
+<p>In the <code>metadata</code> section, assign a custom name to the service account, or use the default name. The default name is <code>activemq-artemis-operator</code>.</p>
+</li>
+<li>
+<p>Create the service account in your project.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-bash hljs" data-lang="bash">$ kubectl create -f deploy/service_account.yaml</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Specify a role name for the Operator.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Open the <code>role.yaml</code> file. This file specifies the resources that the Operator can use and modify.</p>
+</li>
+<li>
+<p>Ensure that the <code>kind</code> element is set to <code>Role</code>.</p>
+</li>
+<li>
+<p>In the <code>metadata</code> section, assign a custom name to the role, or use the default name. The default name is <code>activemq-artemis-operator</code>.</p>
+</li>
+<li>
+<p>Create the role in your project.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-bash hljs" data-lang="bash">$ kubectl create -f deploy/role.yaml</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Specify a role binding for the Operator. The role binding binds the previously-created service account to the Operator role, based on the names you specified.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Open the <code>role_binding.yaml</code> file. Ensure that the <code>name</code> values for <code>ServiceAccount</code> and <code>Role</code> match those specified in the <code>service_account.yaml</code> and <code>role.yaml</code> files. For example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">metadata:
+    name: activemq-artemis-operator
+subjects:
+    kind: ServiceAccount
+    name: activemq-artemis-operator
+roleRef:
+    kind: Role
+    name: activemq-artemis-operator</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create the role binding in your project.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-bash hljs" data-lang="bash">$ kubectl create -f deploy/role_binding.yaml</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>In the procedure that follows, you deploy the Operator in your project.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="proc-br-deploying-operator_"><a class="anchor" href="#proc-br-deploying-operator_"></a>Deploying the Operator using the CLI</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The procedure in this section shows how to use the Kubernetes  command-line interface (CLI) to deploy the latest version of the Operator for ArtemisCloud  in your Kubernetes  project.</p>
+</div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>You must have already prepared your Kubernetes  project for the Operator deployment. See <a href="#proc_br-getting-operator-code_">Getting the Operator code</a>.</p>
+</li>
+<li>
+<p>If you intend to deploy brokers with persistent storage and do not have container-native storage in your Kubernetes  cluster, you need to manually provision Persistent Volumes (PVs) and ensure that they are available to be claimed by the Operator. For example, if you want to create a cluster of two brokers with persistent storage (that is, by setting <code>persistenceEnabled=true</code> in your Custom Resource), you need to have two PVs available. By default, each broker instance requires storage of 2 GiB.</p>
+<div class="paragraph">
+<p>If you specify <code>persistenceEnabled=false</code> in your Custom Resource, the deployed brokers uses <em>ephemeral</em> storage. Ephemeral storage means that that every time you restart the broker Pods, any existing data is lost.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Specify the project in which you want to install the Operator. You can create a new project or switch to an existing one.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Create a new namespace:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-bash hljs" data-lang="bash">$ kubectl create namespace  <em>&lt;project-name&gt;</em></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Or, switch to an existing namespace:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-bash hljs" data-lang="bash">$ kubectl config set-context $(kubectl config current-context) --namespace= <em>&lt;project-name&gt;</em></code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Switch to the directory that was created when you previously extracted the Operator installation archive. For example:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-bash hljs" data-lang="bash">$ cd ~/broker/operator/amq-broker-operator--ocp-install-examples</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Deploy the CRDs that are included with the Operator. You must install the CRDs in your Kubernetes  cluster before deploying and starting the Operator.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Deploy the main broker CRD.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-bash hljs" data-lang="bash">$ kubectl create -f deploy/crds/broker_activemqartemis_crd.yaml</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Deploy the address CRD.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-bash hljs" data-lang="bash">$ kubectl create -f deploy/crds/broker_activemqartemisaddress_crd.yaml</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Deploy the scaledown controller CRD.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-bash hljs" data-lang="bash">$ kubectl create -f deploy/crds/broker_activemqartemisscaledown_crd.yaml</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>In the <code>deploy</code> directory of the Operator archive that you downloaded and extracted, open the <code>operator.yaml</code> file. Ensure that the value of the <code>spec.containers.image</code> property is set to the latest Operator image for ActiveMQ Artemis , as shown below.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-yaml hljs" data-lang="yaml">spec:
+    template:
+        spec:
+            containers:
+                image: quay.io/artemiscloud/activemq-artemis-operator:0.18.1</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Deploy the Operator.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-bash hljs" data-lang="bash">$ kubectl create -f deploy/operator.yaml</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In your Kubernetes  project, the Operator starts in a new Pod.</p>
+</div>
+<div class="paragraph">
+<p>In the Kubernetes web console, the information on the <strong>Events</strong> tab of the Operator Pod confirms that Kubernetes has deployed the Operator image that you specified, has assigned a new container to a node in your Kubernetes  cluster, and has started the new container.</p>
+</div>
+<div class="paragraph">
+<p>In addition, if you click the <strong>Logs</strong> tab within the Pod, the output should include lines resembling the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-asciidoc hljs" data-lang="asciidoc">...
+{"level":"info","ts":1553619035.8302743,"logger":"kubebuilder.controller","msg":"Starting Controller","controller":"activemqartemisaddress-controller"}
+{"level":"info","ts":1553619035.830541,"logger":"kubebuilder.controller","msg":"Starting Controller","controller":"activemqartemis-controller"}
+{"level":"info","ts":1553619035.9306898,"logger":"kubebuilder.controller","msg":"Starting workers","controller":"activemqartemisaddress-controller","worker count":1}
+{"level":"info","ts":1553619035.9311671,"logger":"kubebuilder.controller","msg":"Starting workers","controller":"activemqartemis-controller","worker count":1}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The preceding output confirms that the newly-deployed Operator is communicating with Kubernetes, that the controllers for the broker and addressing are running, and that these controllers have started some workers.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+It is recommended that you deploy only a <strong>single instance</strong> of the ActiveMQ Artemis Operator in a given Kubernetes  project. Setting the <code>replicas</code> element of your Operator deployment to a value greater than <code>1</code>, or deploying the Operator more than once in the same project is <strong>not</strong> recommended.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="bg-light section pb-0">
+  <div class="container">
+    <div class="row">
+        <div class="col-md-3 col-sm-6 mb-10">
+
+
+            <ul class="list-inline social-icons">
+
+                <li class="list-inline-item"><a href="https://twitter.com/artemiscloudio"><i class="ti-twitter-alt"></i></a></li><li class="list-inline-item">twitter</li>
+
+                <li class="list-inline-item"><a href="https://github.com/ArtemisCloud"><i class="ti-github"></i></a></li><li class="list-inline-item">github</li>
+
+            </ul>
+
+        </div>
+    </div>
+
+  </div>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
