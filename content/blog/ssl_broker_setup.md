@@ -17,13 +17,16 @@ Before you start you need have access to a running Kubernetes cluster environmen
 ### Deploy ArtemisCloud operator
 First you need to deploy the ArtemisCloud operator.
 If you are not sure how to deploy the operator take a look at [this blog]({{< relref "/blog/using_operator.md" >}}).
+
+In this blog post we assume you deployed the operator to a namespace called **myproject**.
+
 Make sure the operator is in "Runing" status before going to the next step.
 You can run this command and observe the output:
 
 ```shell script
-$ kubectl get pod
+$ kubectl get pod -n myproject
 NAME                                         READY   STATUS    RESTARTS   AGE
-activemq-artemis-operator-5c4b7b5b67-w62kq   1/1     Running   0          106s
+activemq-artemis-operator-58bb658f4c-zcqmw   1/1     Running   0          7m32s
 ```
 
 ### Prepare keystore and truststore
@@ -98,7 +101,7 @@ Here we'll use "ex-aao" for CR's name and "sslacceptor" for the acceptor's name.
 
 Run the following command to create the secret we need:
 ```shell script
-$ kubectl create secret generic ex-aao-sslacceptor-secret --from-file=broker.ks --from-file=client.ts --from-literal=keyStorePassword='password' --from-literal=trustStorePassword='password'
+$ kubectl create secret generic ex-aao-sslacceptor-secret --from-file=broker.ks --from-file=client.ts --from-literal=keyStorePassword='password' --from-literal=trustStorePassword='password' -n myproject
 secret/ex-aao-sslacceptor-secret created
 ```
 
@@ -125,17 +128,17 @@ In this broker CR we configure an acceptor named "sslacceptor" that listens on t
 ### Deploy the broker
 Deploy the above **broker_ssl_enabled.yaml** to the cluster:
 ```shell script
-$ kubectl create -f broker_ssl_enabled.yaml
+$ kubectl create -f broker_ssl_enabled.yaml -n myproject
 activemqartemis.broker.amq.io/ex-aao created
 ```
 In a moment the broker should be up and running. Run the command to check it out:
 ```shell script
-$ kubectl get pod
+$ kubectl get pod -n myproject
 NAME                                         READY   STATUS    RESTARTS   AGE
-activemq-artemis-operator-5c4b7b5b67-w62kq   1/1     Running   0          86m
-ex-aao-ss-0                                  1/1     Running   0          41s
+activemq-artemis-operator-58bb658f4c-zcqmw   1/1     Running   0          18m
+ex-aao-ss-0                                  1/1     Running   0          71s
 ```
-Using "kubectl logs ex-aao-ss-0" command you can checkout the console log of the broker. You'll be seeing a line like this in the log:
+Using "kubectl logs ex-aao-ss-0 -n myproject" command you can checkout the console log of the broker. You'll be seeing a line like this in the log:
 
 ```
 2021-02-08 12:54:12,837 INFO  [org.apache.activemq.artemis.core.server] AMQ221020: Started EPOLL Acceptor at ex-aao-ss-0.ex-aao-hdls-svc.default.svc.cluster.local:61617 for protocols [CORE,MQTT,AMQP,HORNETQ,STOMP,OPENWIRE]
