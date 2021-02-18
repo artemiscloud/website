@@ -20,12 +20,14 @@ $ cd activemq-artemis-operator
 
 If you are not sure how to deploy the operator take a look at [this blog]({{< relref "/blog/using_operator.md" >}}).
 
+In this blog post we assume you deployed the operator to a namespace called **myproject**.
+
 After deployment is done, check the operator is up and running. For example run the following command:
 
 ```shell script
-$ kubectl get pod
+$ kubectl get pod -n myproject
 NAME                                         READY   STATUS    RESTARTS   AGE
-activemq-artemis-operator-58bb658f4c-h2jrk   1/1     Running   0          2m5s
+activemq-artemis-operator-58bb658f4c-m9rfr   1/1     Running   0          2m46s
 ```
 
 ### Step 2 - Deploy ActiveMQ Artemis broker
@@ -50,7 +52,8 @@ Use your favorite text editor to create a file called **artemis-clustered.yaml**
 Save it and deploy it using the following command:
 
 ```shell script
-$ kubectl create -f artemis-clustered.yaml
+$ kubectl create -f artemis-clustered.yaml -n myproject
+activemqartemis.broker.amq.io/ex-aao created
 ```
 
 The custom resource file tells the operator to deploy one broker pod from the image **quay.io/artemiscloud/activemq-artemis-broker-kubernetes:0.2.1**,
@@ -63,10 +66,10 @@ configured with **persistenceEnabled: true** and **messageMigration: true**.
 In a while the broker pod should be up and running:
 
 ```shell script
-$ kubectl get pod
+$ kubectl get pod -n myproject
 NAME                                         READY   STATUS    RESTARTS   AGE
-activemq-artemis-operator-58bb658f4c-h2jrk   1/1     Running   0          5m38s
-ex-aao-ss-0                                  1/1     Running   0          2m27s
+activemq-artemis-operator-58bb658f4c-m9rfr   1/1     Running   0          7m14s
+ex-aao-ss-0                                  1/1     Running   0          83s
 ```
 
 ### Step 3 - Scaling up
@@ -89,17 +92,17 @@ To inform the operator that we want to scale from one to two broker pods modify 
 and apply it:
 
 ```shell script
-    $ kubectl apply -f artemis-clustered.yaml
+    $ kubectl apply -f artemis-clustered.yaml -n myproject
 ```
 
 Verify that 2 pods are spawned up in a while:
 
 ```shell script
-$ kubectl get pod
+$ kubectl get pod -n myproject
 NAME                                         READY   STATUS    RESTARTS   AGE
-activemq-artemis-operator-58bb658f4c-h2jrk   1/1     Running   0          7m15s
-ex-aao-ss-0                                  1/1     Running   0          4m4s
-ex-aao-ss-1                                  1/1     Running   0          38s
+activemq-artemis-operator-58bb658f4c-m9rfr   1/1     Running   0          12m
+ex-aao-ss-0                                  1/1     Running   0          6m33s
+ex-aao-ss-1                                  1/1     Running   0          75s
 ```
 
 ### Step 4 - Send messages to both brokers
@@ -108,54 +111,54 @@ Run the following commands to send 100 messages to each broker:
 
 broker0 at pod ex-aao-ss-0
 ```shell script
-$ kubectl exec ex-aao-ss-0 -- /bin/bash /home/jboss/amq-broker/bin/artemis producer --user admin --password admin --url tcp://ex-aao-ss-0:61616 --message-count 100
+$ kubectl exec ex-aao-ss-0 -n myproject -- /bin/bash /home/jboss/amq-broker/bin/artemis producer --user admin --password admin --url tcp://ex-aao-ss-0:61616 --message-count 100
 OpenJDK 64-Bit Server VM warning: If the number of processors is expected to increase from one, then you should configure the number of parallel GC threads appropriately using -XX:ParallelGCThreads=N
 Connection brokerURL = tcp://ex-aao-ss-0:61616
 Producer ActiveMQQueue[TEST], thread=0 Started to calculate elapsed time ...
 
 Producer ActiveMQQueue[TEST], thread=0 Produced: 100 messages
 Producer ActiveMQQueue[TEST], thread=0 Elapsed time in second : 0 s
-Producer ActiveMQQueue[TEST], thread=0 Elapsed time in milli second : 467 milli seconds
+Producer ActiveMQQueue[TEST], thread=0 Elapsed time in milli second : 466 milli seconds
 ```
 broker1 at pod ex-aao-ss-1
 ```shell script
-$ kubectl exec ex-aao-ss-1 -- /bin/bash /home/jboss/amq-broker/bin/artemis producer --user admin --password admin --url tcp://ex-aao-ss-1:61616 --message-count 100
+$ kubectl exec ex-aao-ss-1 -n myproject -- /bin/bash /home/jboss/amq-broker/bin/artemis producer --user admin --password admin --url tcp://ex-aao-ss-1:61616 --message-count 100
 OpenJDK 64-Bit Server VM warning: If the number of processors is expected to increase from one, then you should configure the number of parallel GC threads appropriately using -XX:ParallelGCThreads=N
 Connection brokerURL = tcp://ex-aao-ss-1:61616
 Producer ActiveMQQueue[TEST], thread=0 Started to calculate elapsed time ...
 
 Producer ActiveMQQueue[TEST], thread=0 Produced: 100 messages
 Producer ActiveMQQueue[TEST], thread=0 Elapsed time in second : 0 s
-Producer ActiveMQQueue[TEST], thread=0 Elapsed time in milli second : 487 milli seconds
+Producer ActiveMQQueue[TEST], thread=0 Elapsed time in milli second : 511 milli seconds
 ```
 
 The messages are send to a queue **TEST** in each broker. The following commands can show the queue's message count on each broker:
 
 broker0 at pod ex-aao-ss-0
 ```shell script
-$ kubectl exec ex-aao-ss-0 -- /bin/bash /home/jboss/amq-broker/bin/artemis queue stat --user admin --password admin --url tcp://ex-aao-ss-0:61616
+$ kubectl exec ex-aao-ss-0 -n myproject -- /bin/bash /home/jboss/amq-broker/bin/artemis queue stat --user admin --password admin --url tcp://ex-aao-ss-0:61616
 OpenJDK 64-Bit Server VM warning: If the number of processors is expected to increase from one, then you should configure the number of parallel GC threads appropriately using -XX:ParallelGCThreads=N
 Connection brokerURL = tcp://ex-aao-ss-0:61616
 |NAME                     |ADDRESS                  |CONSUMER_COUNT |MESSAGE_COUNT |MESSAGES_ADDED |DELIVERING_COUNT |MESSAGES_ACKED |SCHEDULED_COUNT |ROUTING_TYPE |
-|$.artemis.internal.sf.my-cluster.c99bf135-66eb-11eb-b025-0242ac110005|$.artemis.internal.sf.my-cluster.c99bf135-66eb-11eb-b025-0242ac110005|1              |0             |0              |0                |0              |0               |MULTICAST    |
+|$.artemis.internal.sf.my-cluster.f5e3b3bf-71b2-11eb-ab9a-0242ac110005|$.artemis.internal.sf.my-cluster.f5e3b3bf-71b2-11eb-ab9a-0242ac110005|1              |0             |0              |0                |0              |0               |MULTICAST    |
 |DLQ                      |DLQ                      |0              |0             |0              |0                |0              |0               |ANYCAST      |
 |ExpiryQueue              |ExpiryQueue              |0              |0             |0              |0                |0              |0               |ANYCAST      |
 |TEST                     |TEST                     |0              |100           |100            |0                |0              |0               |ANYCAST      |
-|activemq.management.1cfc170e-f1e6-4a12-81c3-59616bd2a71b|activemq.management.1cfc170e-f1e6-4a12-81c3-59616bd2a71b|1              |0             |0              |0                |0              |0               |MULTICAST    |
-|notif.ccef13df-66eb-11eb-b025-0242ac110005.ActiveMQServerImpl_serverUUID=c99bf135-66eb-11eb-b025-0242ac110005|activemq.notifications   |1              |0             |10             |0                |10             |0               |MULTICAST    |
+|activemq.management.8333dec3-8376-4b50-a9d0-f2197c55e6a8|activemq.management.8333dec3-8376-4b50-a9d0-f2197c55e6a8|1              |0             |0              |0                |0              |0               |MULTICAST    |
+|notif.f9cf93f9-71b2-11eb-ab9a-0242ac110005.ActiveMQServerImpl_serverUUID=f5e3b3bf-71b2-11eb-ab9a-0242ac110005|activemq.notifications   |1              |0             |16             |0                |16             |0               |MULTICAST    |
 ```
 broker1 at pod ex-aao-ss-1
 ```shell script
-$ kubectl exec ex-aao-ss-1 -- /bin/bash /home/jboss/amq-broker/bin/artemis queue stat --user admin --password admin --url tcp://ex-aao-ss-1:61616
+$ kubectl exec ex-aao-ss-1 -n myproject -- /bin/bash /home/jboss/amq-broker/bin/artemis queue stat --user admin --password admin --url tcp://ex-aao-ss-1:61616
 OpenJDK 64-Bit Server VM warning: If the number of processors is expected to increase from one, then you should configure the number of parallel GC threads appropriately using -XX:ParallelGCThreads=N
 Connection brokerURL = tcp://ex-aao-ss-1:61616
 |NAME                     |ADDRESS                  |CONSUMER_COUNT |MESSAGE_COUNT |MESSAGES_ADDED |DELIVERING_COUNT |MESSAGES_ACKED |SCHEDULED_COUNT |ROUTING_TYPE |
-|$.artemis.internal.sf.my-cluster.901d2945-66eb-11eb-afcd-0242ac110004|$.artemis.internal.sf.my-cluster.901d2945-66eb-11eb-afcd-0242ac110004|1              |0             |0              |0                |0              |0               |MULTICAST    |
+|$.artemis.internal.sf.my-cluster.39079f07-71b2-11eb-88be-0242ac110004|$.artemis.internal.sf.my-cluster.39079f07-71b2-11eb-88be-0242ac110004|1              |0             |0              |0                |0              |0               |MULTICAST    |
 |DLQ                      |DLQ                      |0              |0             |0              |0                |0              |0               |ANYCAST      |
 |ExpiryQueue              |ExpiryQueue              |0              |0             |0              |0                |0              |0               |ANYCAST      |
 |TEST                     |TEST                     |0              |100           |100            |0                |0              |0               |ANYCAST      |
-|activemq.management.67464827-2582-4f71-9bc5-db632618b8e2|activemq.management.67464827-2582-4f71-9bc5-db632618b8e2|1              |0             |0              |0                |0              |0               |MULTICAST    |
-|notif.ccd486df-66eb-11eb-afcd-0242ac110004.ActiveMQServerImpl_serverUUID=901d2945-66eb-11eb-afcd-0242ac110004|activemq.notifications   |1              |0             |10             |0                |10             |0               |MULTICAST    |
+|activemq.management.2a56ebf0-37ad-4cad-9b45-b84cb148f2ff|activemq.management.2a56ebf0-37ad-4cad-9b45-b84cb148f2ff|1              |0             |0              |0                |0              |0               |MULTICAST    |
+|notif.fa438b23-71b2-11eb-88be-0242ac110004.ActiveMQServerImpl_serverUUID=39079f07-71b2-11eb-88be-0242ac110004|activemq.notifications   |1              |0             |12             |0                |12             |0               |MULTICAST    |
 ```
 
 ### Step 5 - Scale down with message draining
@@ -185,28 +188,28 @@ Now scale down the cluster from 2 pods to one. Edit the [broker cr](#broker_clus
 Apply it:
 
 ```shell script
-$ kubectl apply -f artemis-clustered.yaml
+$ kubectl apply -f artemis-clustered.yaml -n myproject
 activemqartemis.broker.amq.io/ex-aao configured
 ```
 In a moment the broker pods will go down to 1. To check, run
 
 ```shell script
-$ kubectl get pod
+$ kubectl get pod -n myproject
 NAME                                         READY   STATUS    RESTARTS   AGE
-activemq-artemis-operator-58bb658f4c-h2jrk   1/1     Running   0          14m
-ex-aao-ss-0                                  1/1     Running   0          11m
+activemq-artemis-operator-58bb658f4c-m9rfr   1/1     Running   0          26m
+ex-aao-ss-0                                  1/1     Running   0          20m
 ```
 Now check the messages in queue TEST at the pod again:
 ```shell script
-$ kubectl exec ex-aao-ss-0 -- /bin/bash /home/jboss/amq-broker/bin/artemis queue stat --user admin --password admin --url tcp://ex-aao-ss-0:61616
+$ kubectl exec ex-aao-ss-0 -n myproject -- /bin/bash /home/jboss/amq-broker/bin/artemis queue stat --user admin --password admin --url tcp://ex-aao-ss-0:61616
 OpenJDK 64-Bit Server VM warning: If the number of processors is expected to increase from one, then you should configure the number of parallel GC threads appropriately using -XX:ParallelGCThreads=N
 Connection brokerURL = tcp://ex-aao-ss-0:61616
 |NAME                     |ADDRESS                  |CONSUMER_COUNT |MESSAGE_COUNT |MESSAGES_ADDED |DELIVERING_COUNT |MESSAGES_ACKED |SCHEDULED_COUNT |ROUTING_TYPE |
-|$.artemis.internal.sf.my-cluster.c99bf135-66eb-11eb-b025-0242ac110005|$.artemis.internal.sf.my-cluster.c99bf135-66eb-11eb-b025-0242ac110005|0              |0             |0              |0                |0              |0               |MULTICAST    |
+|$.artemis.internal.sf.my-cluster.f5e3b3bf-71b2-11eb-ab9a-0242ac110005|$.artemis.internal.sf.my-cluster.f5e3b3bf-71b2-11eb-ab9a-0242ac110005|0              |0             |0              |0                |0              |0               |MULTICAST    |
 |DLQ                      |DLQ                      |0              |0             |0              |0                |0              |0               |ANYCAST      |
 |ExpiryQueue              |ExpiryQueue              |0              |0             |0              |0                |0              |0               |ANYCAST      |
 |TEST                     |TEST                     |0              |200           |200            |0                |0              |0               |ANYCAST      |
-|activemq.management.32d7d8ba-4197-4d5f-8e6c-9c6d05e8bd03|activemq.management.32d7d8ba-4197-4d5f-8e6c-9c6d05e8bd03|1              |0             |0              |0                |0              |0               |MULTICAST    |
+|activemq.management.8ee46c3d-c2ba-4e1c-9b6c-f2631e662cb1|activemq.management.8ee46c3d-c2ba-4e1c-9b6c-f2631e662cb1|1              |0             |0              |0                |0              |0               |MULTICAST    |
 ```
 It shows queue TEST's message count is **200** now!
 
