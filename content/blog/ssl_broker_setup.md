@@ -20,7 +20,7 @@ If you are not sure how to deploy the operator take a look at [this blog]({{< re
 
 In this blog post we assume you deployed the operator to a namespace called **myproject**.
 
-Make sure the operator is in "Runing" status before going to the next step.
+Make sure the operator is in "Running" status before going to the next step.
 You can run this command and observe the output:
 
 ```shell script
