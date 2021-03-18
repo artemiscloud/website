@@ -1,7 +1,7 @@
 ####################### Banner #########################
 banner:
   title: "ArtemisCloud.io - Artemis on Kubernetes"
-  content: "ArtemisCloud.io is a collection of container images that provide a way to deploy the Apache ActiveMQ Artemis Broker on Kubernetes, try [getting Started](blog/using_operator/)"
+  content: "ArtemisCloud.io is a collection of container images that provide a way to deploy the Apache ActiveMQ Artemis Broker on Kubernetes, try [Getting Started](blog/using_operator/)"
 ##################### whatis ###########################
 whatis:
   enable: true
