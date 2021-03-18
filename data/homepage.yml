@@ -12,7 +12,7 @@ whatis:
           configurations easily on either kubernetes or OpenShift"
   title2: "Getting Started"
   content2: "Quickly deploy a basic Container image that runs the broker [Blog post](blog/deploybasicimage/)
-            </br></br> Try deploying the broker using the ArtemisCloud Kubenetes Operator [<b>Blog Post</b>](blog/using_operator/)
+            </br></br> Try deploying the broker using the ArtemisCloud Kubenetes Operator [Blog Post](blog/using_operator/)
             </br></br> Find out how you can be part of the ArtemisCloud community [here](community)"
 
 ##################### Feature ##########################
