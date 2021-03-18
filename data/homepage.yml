@@ -1,7 +1,19 @@
 ####################### Banner #########################
 banner:
-  title: "ArtemisCloud.io - Artemis on Kubernetes"
-  content: "ArtemisCloud allows you to expose the power of ActiveMQ Artemis with kubernetes. ArtemisCloud is a collection of tools, container images and content that allows the quick and easy deployment of the Artemis Broker on Kubernetes. Try [Getting Started](blog/using_operator) with the ArtemisCloud Operator now!"
+  title: "Artemiscloud.io - Artemis on Kubernetes"
+  content: "Artemiscloud.io is a collection of container images that provide a way to deploy the Apache ActiveMQ Artemis Broker on Kubernetes"
+##################### whatis ###########################
+whatis:
+  enable: true
+  title: "What is ArtemisCloud"
+  content: "ArtemisCloud is a collection of container images that leverages Kubernetes to deploy the Apache ActiveMQ Artemis Broker.
+          Apache ActiveMQ Artemis is a multi protocol message broker that is hosted at Apache as part of the ActiveMQ umbrella. For more on the Apache Artemis Broker take a look at the [documentation](https://activemq.apache.org/components/artemis/documentation/).
+          </br></br>The ArtemisCloud container images include a kubernetes Operator that allows you to deploy the Broker with various deployment
+          configurations easily on either kubernetes or OpenShift"
+  title2: "Getting Started"
+  content2: "Quickly deploy a basic Container image that runs the broker [Blog post](blog/deploybasicimage/)
+            </br></br> Try deploying the broker using the ArtemisCloud Kubenetes Operator [Blog Post](blog/using_operator/)
+            </br></br> Find out how you can be part of the ArtemisCloud community [here](community)"
 
 ##################### Feature ##########################
 feature:
@@ -32,30 +44,3 @@ feature:
     - name: "CI/CD"
       icon: "ti-arrow-right"
       content: "Continuous integration and deployment to quickly develop and test new features"
-
-######################### Service #####################
-#service:
-  #  enable: true
-    #service_item:
-    ## service item loop
-      #- title: "It is the most advanced digital marketing and it company."
-        #images:
-        #- "images/service-1.png"
-        #- "images/service-2.png"
-      #- "images/service-3.png"
-      vcontent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat. consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat."
-        #button:
-        #enable: true
-        #label: "Check it out"
-      #link: "#"
-
-    # service item loop
-      #    - title: "It is a privately owned Information and cyber security company"
-        #images:
-      #- "images/service-1.png"
-      #content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat. consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat."
-        #button:
-        #enable: true
-        #label: "Check it out"
-      #link: "#"
-
