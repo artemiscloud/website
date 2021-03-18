@@ -15,6 +15,12 @@
   }
 }
 
+.copyright {
+    p, .paragraph {
+    font-size: 12px;
+}
+}
+
 th {
   border: 1px solid $bg-color;
   background-color: $fg-color;
